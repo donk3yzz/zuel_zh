@@ -1,6 +1,6 @@
 --- 
 # 论文标题
-title: '中国科学院大学学位论文 bookdown 模板'
+title: '中南财经政法大学本科生学位论文 bookdown 模板（非官方）'
 etitle: 'R bookdownplus'
 # 论文作者
 author: "author"

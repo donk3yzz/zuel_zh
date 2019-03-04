@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.2.25)  2 MAR 2019 21:18
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.2.25)  4 MAR 2019 13:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1492,8 +1492,8 @@ LaTeX Info: Redefining \nameref on input line 111.
 \@outlinefile=\write4
 \openout4 = `ucas_zh.out'.
 
-File: Img/ucas_logo.pdf Graphic file (type pdf)
-<use Img/ucas_logo.pdf>
+File: Img/zuel_logo.pdf Graphic file (type pdf)
+<use Img/zuel_logo.pdf>
 
 Package fontspec Info: Could not resolve font "SimHei/I" (it probably doesn't
 (fontspec)             exist).
@@ -1671,10 +1671,10 @@ Package rerunfilecheck Info: File `ucas_zh.out' has not changed.
 (rerunfilecheck)             Checksum: 329BB2334509686565B62ABCFE741E19.
  ) 
 Here is how much of TeX's memory you used:
- 31676 strings out of 494921
- 615843 string characters out of 6176182
+ 31716 strings out of 494921
+ 618499 string characters out of 6176182
  690922 words of memory out of 5000000
- 35138 multiletter control sequences out of 15000+600000
+ 35178 multiletter control sequences out of 15000+600000
  583240 words of font info for 159 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,11n,94p,923b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
