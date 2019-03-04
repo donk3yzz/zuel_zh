@@ -106,35 +106,7 @@ install.packages('pinyin')`.
 祝你玩得愉快！
 
 
-# 结果与讨论 {#results}
-
-结了个果。
 
 
-# 结论 {#conclusion}
 
-盖棺定论。
 
-\appendix
-
-# 定理推倒
-
-\raggedbottom
-
-## 定理 A 的推倒
-
-\flushbottom
-
-\backmatter
-
-# 作者简历及攻读学位期间发表的学术论文与研究成果
-
-本科生无需此部分。
-
-# 致谢
-
-本模板源自 mohuangrui/ucasthesis \LaTeX{} 模板^[https://gitlab.com/mohuangrui/ucasthesis]。感谢！
-
-# 参考文献
-
-\bibliography{bib/bib}
