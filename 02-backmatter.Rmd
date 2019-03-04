@@ -9,6 +9,3 @@
 
 本模板源自 mohuangrui/ucasthesis \LaTeX{} 模板^[https://gitlab.com/mohuangrui/ucasthesis]。感谢！
 
-# 参考文献
-
-\bibliography{bib/bib}
