@@ -18,8 +18,8 @@ emajor: 'Typesetting'
 advisor: '谷哥教授'
 englishadvisor: 'Supervisor: Prof.Google'
 # 学位
-degree: '硕士' # 学位：学士、硕士、博士
-edegree: 'Master' # 学位：Bachelor, Master, Doctor。封面格式将根据英文学位名称自动切换，请确保拼写准确无误
+degree: '学士' # 学位：学士、硕士、博士
+edegree: {Bachelor} # 学位：Bachelor, Master, Doctor。封面格式将根据英文学位名称自动切换，请确保拼写准确无误
 degreetype: '理学' #学位类别：理学、工学、工程、医学等
 edegreetype: 'Natural Science' #学位类别：Philosophy, Natural Science, Engineering, Economics, Agriculture 等
 # 论文类型
@@ -51,8 +51,8 @@ link-citations: yes
 colorlinks: no
 lot: yes
 lof: yes
-geometry: [a4paper, tmargin=2.5cm, bmargin=2.5cm, lmargin=3.5cm, rmargin=2.5cm]
-description: "This is a thesis."
+geometry: [a4paper, tmargin=3cm, bmargin=2.5cm, lmargin=2.5cm, rmargin=2cm]
+description: "中南财经政法大学毕业论文bookdown模版"
 ---
 
 ```{r set-options, echo=FALSE, cache=FALSE}

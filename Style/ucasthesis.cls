@@ -71,6 +71,8 @@
     \makeatletter
     \InputIfFileExists{Style/ucasthesis.cfg}{}{}
     \makeatother
+    
+    \normalspacedchars{-}
 }
 %---------------------------------------------------------------------------%
 %->> Page layout
