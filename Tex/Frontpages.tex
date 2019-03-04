@@ -1,0 +1,57 @@
+%---------------------------------------------------------------------------%
+%->> 封面信息及生成
+%---------------------------------------------------------------------------%
+%-
+%-> 中文封面信息
+%-
+\confidential{}% 密级：只有涉密论文才填写
+\schoollogo{scale=0.095}{ucas_logo}% 校徽
+\title{$title$}% 论文中文题目
+\author{$author$}% 论文作者
+\advisor{$advisor$}% 指导教师：姓名 专业技术职务 工作单位
+\advisorsec{$advisorsec$}% 指导老师附加信息 或 第二指导老师信息
+\degree{$degree$}% 学位：学士、硕士、博士
+\degreetype{$degreetype$}% 学位类别：理学、工学、工程、医学等
+\major{$$major}% 二级学科专业名称
+\institute{$institute$}% 院系名称
+\chinesedate{$chinesedate$}% 毕业日期：夏季为6月、冬季为12月
+%-
+%-> 英文封面信息
+%-
+\englishtitle{$etitle$}% 论文英文题目
+\englishauthor{$eauthor$}% 论文作者
+\englishadvisor{$englishadvisor$}% 指导教师
+\englishdegree{$edegree$}% 学位：Bachelor, Master, Doctor。封面格式将根据英文学位名称自动切换，请确保拼写准确无误
+\englishdegreetype{$edegreetype$}% 学位类别：Philosophy, Natural Science, Engineering, Economics, Agriculture 等
+\englishthesistype{$englishthesistype$}% 论文类型： thesis, dissertation
+\englishmajor{$emajor$}% 二级学科专业名称
+\englishinstitute{$einstitute$}% 院系名称
+\englishdate{$englishdate$}% 毕业日期：夏季为June、冬季为December
+%-
+%-> 生成封面
+%-
+\maketitle% 生成中文封面
+\makeenglishtitle% 生成英文封面
+%-
+%-> 作者声明
+%-
+\makedeclaration% 生成声明页
+%-
+%-> 中文摘要
+%-
+\chapter*{摘\quad 要}\chaptermark{摘\quad 要}% 摘要标题
+\setcounter{page}{1}% 开始页码
+\pagenumbering{Roman}% 页码符号
+
+$cabstract$
+
+\keywords{$ckeywords$}% 中文关键词
+%-
+%-> 英文摘要
+%-
+\chapter*{Abstract}\chaptermark{Abstract}% 摘要标题
+
+$eabstract$
+
+\englishkeywords{$ekeywords$}% 英文关键词
+%---------------------------------------------------------------------------%

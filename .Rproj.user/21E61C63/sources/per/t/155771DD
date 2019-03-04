@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1551420810134.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4138296652",
+    "id" : "155771DD",
+    "lastKnownWriteTime" : 1551420325,
+    "last_content_update" : 1551420325,
+    "path" : "~/ucas_zh/Style/ucasthesis.cls",
+    "project_path" : "Style/ucasthesis.cls",
+    "properties" : {
+        "cursorPosition" : "9,37",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "tex"
+}

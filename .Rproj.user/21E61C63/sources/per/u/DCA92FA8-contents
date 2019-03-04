@@ -1,0 +1,4 @@
+library(tinytex)
+
+tlmgr_search('ucasthesis.cls')
+tlmgr_install(pkgs = 'tlnet')

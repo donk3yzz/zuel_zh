@@ -1,0 +1,9 @@
+{
+    "path" : "~/ucas_zh",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
