@@ -54,9 +54,9 @@ lof: yes
 geometry: [a4paper, tmargin=3cm, bmargin=2.5cm, lmargin=2.5cm, rmargin=2cm]
 description: "中南财经政法大学毕业论文bookdown模版"
 rmd_files:
-  latex: ["index.Rmd", "00-body.Rmd", "02-backmatter.rmd", 
+  latex: ["index.Rmd", "00-body.Rmd", "03-backmatter.rmd", 
           "01-results-conclusion", "04-references",
-          "03-appendix.rmd"]
+          "02-appendix.rmd"]
 
 ---
 
