@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.2.25)  6 MAR 2019 13:45
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.2.25)  9 MAR 2019 00:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1559,11 +1559,21 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 ]
 Overfull \vbox (8.91176pt too high) has occurred while \output is active []
 
-[2] [3
+[2]
+Overfull \hbox (143.7719pt too wide) in paragraph at lines 150--150
+ |   [] 
+ []
+
+[3
 
 
 
 ] [4
+
+
+] [5
+
+] [6
 
 
 ]
@@ -1592,11 +1602,11 @@ Package fontspec Info: Font family 'SimSun(2)' created for font 'SimSun' with
 
 
 LaTeX Font Warning: Font shape `TU/SimSun(2)/bx/n' undefined
-(Font)              using `TU/SimSun(2)/m/n' instead on input line 154.
+(Font)              using `TU/SimSun(2)/m/n' instead on input line 156.
 
-[5
+[7
 
-] [6
+] [8
 
 
 ] [1
@@ -1605,11 +1615,171 @@ LaTeX Font Warning: Font shape `TU/SimSun(2)/bx/n' undefined
 
 ] [3] [4
 
-] (./ucas_zh.toc [5])
+] (./ucas_zh.toc
+Overfull \hbox (6.0225pt too wide) detected at line 3
+ []\TU/entextsf/m/n/12.045 3
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 4
+ []\TU/entextsf/m/n/12.045 3
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 5
+ []\TU/entextsf/m/n/12.045 3
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 6
+ []\TU/entextsf/m/n/12.045 3
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 7
+ []\TU/entextsf/m/n/12.045 4
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 8
+ []\TU/entextsf/m/n/12.045 4
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 9
+ []\TU/entextsf/m/n/12.045 4
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 13
+ []\TU/entextsf/m/n/12.045 9
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 14
+ []\TU/entextsf/m/n/12.045 9
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 15
+ []\TU/entextsf/m/n/12.045 9
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 16
+ []\TU/entextsf/m/n/12.045 10
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 17
+ []\TU/entextsf/m/n/12.045 10
+ []
+
+
+Overfull \hbox (11.59802pt too wide) detected at line 20
+ []\TU/entextsf/m/n/12.045 11
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 21
+ []\TU/entextsf/m/n/12.045 12
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 22
+ []\TU/entextsf/m/n/12.045 12
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 23
+ []\TU/entextsf/m/n/12.045 13
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 24
+ []\TU/entextsf/m/n/12.045 15
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 25
+ []\TU/entextsf/m/n/12.045 15
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 26
+ []\TU/entextsf/m/n/12.045 16
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 27
+ []\TU/entextsf/m/n/12.045 16
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 28
+ []\TU/entextsf/m/n/12.045 16
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 29
+ []\TU/entextsf/m/n/12.045 17
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 30
+ []\TU/entextsf/m/n/12.045 18
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 31
+ []\TU/entextsf/m/n/12.045 18
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 32
+ []\TU/entextsf/m/n/12.045 19
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 33
+ []\TU/entextsf/m/n/12.045 19
+ []
+
+[5]
+Overfull \hbox (12.045pt too wide) detected at line 34
+ []\TU/entextsf/m/n/12.045 20
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 35
+ []\TU/entextsf/m/n/12.045 20
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 36
+ []\TU/entextsf/m/n/12.045 21
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 37
+ []\TU/entextsf/m/n/12.045 21
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 38
+ []\TU/entextsf/m/n/12.045 21
+ []
+
+)
 \tf@toc=\write5
 \openout5 = `ucas_zh.toc'.
 
-[6] (./ucas_zh.lof)
+[6] (./ucas_zh.lof
+Overfull \hbox (6.0225pt too wide) detected at line 2
+ []\TU/entextsf/m/n/12.045 2
+ []
+
+)
 \tf@lof=\write6
 \openout6 = `ucas_zh.lof'.
 
@@ -1617,7 +1787,12 @@ LaTeX Font Warning: Font shape `TU/SimSun(2)/bx/n' undefined
 
 ] [8
 
-] (./ucas_zh.lot)
+] (./ucas_zh.lot
+Overfull \hbox (6.0225pt too wide) detected at line 2
+ []\TU/entextsf/m/n/12.045 2
+ []
+
+)
 \tf@lot=\write7
 \openout7 = `ucas_zh.lot'.
 
@@ -1651,7 +1826,7 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12.045> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 219.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 221.
 [1
 
 
@@ -1680,7 +1855,7 @@ e=DFLT;mapping=tex-text;!
 [12] [13] [14]
 Missing character: There is no ， in font [lmmono12-regular]:!
 [15] [16]
-Overfull \hbox (2.67517pt too wide) in paragraph at lines 555--556
+Overfull \hbox (2.67517pt too wide) in paragraph at lines 557--558
 []\TU/SimSun(1)/bx/n/12.045 其 他 格 式。|  \TU/SimSun(1)/m/n/12.045 当 项 次 下 无 目 次 时
 ，|  也 可 在 正 文 的 同 一 段 落 中 用 \TU/entextsf/m/n/12.045 “ |\TU/SimSun(1)/m/n/12.045
  （\TU/entextsf/m/n/12.045 1\TU/SimSun(1)/m/n/12.045 ）| \TU/entextsf/m/n/12.045 
@@ -1699,21 +1874,21 @@ Overfull \hbox (2.67517pt too wide) in paragraph at lines 555--556
 ]
 No file ucas_zh.bbl.
 
-Package caption Warning: Unused \captionsetup[bi-first] on input line 205.
+Package caption Warning: Unused \captionsetup[bi-first] on input line 207.
 See the caption package documentation for explanation.
 
 
-Package caption Warning: Unused \captionsetup[bi-second] on input line 205.
+Package caption Warning: Unused \captionsetup[bi-second] on input line 207.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 690.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 692.
 [27
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 690.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 692.
 (./ucas_zh.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 690.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 690.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 692.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 692.
 Package rerunfilecheck Info: File `ucas_zh.out' has not changed.
 (rerunfilecheck)             Checksum: 475F7A435804F9D23F688493FC138930.
 
@@ -1721,12 +1896,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32066 strings out of 494921
- 639313 string characters out of 6176182
- 695911 words of memory out of 5000000
- 35519 multiletter control sequences out of 15000+600000
- 583304 words of font info for 167 fonts, out of 8000000 for 9000
+ 32097 strings out of 494921
+ 641072 string characters out of 6176182
+ 696062 words of memory out of 5000000
+ 35546 multiletter control sequences out of 15000+600000
+ 583336 words of font info for 171 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,12n,94p,923b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ucas_zh.pdf (45 pages).
+Output written on ucas_zh.pdf (47 pages).

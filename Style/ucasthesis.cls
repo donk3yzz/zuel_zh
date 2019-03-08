@@ -306,6 +306,43 @@
       \cleardoublepage[empty]
     \fi
 }
+
+%->> Make zuel's title
+\newcommand{\makezueltitle}{%
+    \cleardoublepage
+    \thispagestyle{empty}
+    \begin{center}
+
+        \vspace*{8ex}
+        \zihao{2}
+
+        {\zihao{2} \bfseries \linespread{1.3}  \ucas@value@title }
+
+        \vspace*{1ex}
+
+        {\zihao{3} \bfseries \ucas@value@author}
+
+        \vspace*{1ex}
+
+        {\zihao{2} \bfseries \ucas@value@englishtitle }
+
+        \vspace*{1ex}
+
+        \textit{\zihao{3} \ \ucas@value@englishauthor\ }
+
+        \vspace*{1ex}
+
+        %{ \zihao{3} \bfseries \ucas@value@chinesedate }
+
+        %\vspace*{2ex}
+    \end{center}
+    \clearpage
+    \if@twoside
+      \thispagestyle{empty}
+      \cleardoublepage[empty]
+    \fi
+}
+
 %---------------------------------------------------------------------------%
 %->> Author's declaration
 %---------------------------------------------------------------------------%
@@ -360,7 +397,8 @@
 %- define chinese keywords
 \newcommand{\keywords}[1]{%
     \vspace{\baselineskip}
-    \noindent {\bfseries \ucas@label@keywords} #1}
+    \hspace{0em}
+    {\bfseries \ucas@label@keywords} #1}
 %- define engish keywords
 \newcommand{\englishkeywords}[1]{%
     \vspace{\baselineskip}
@@ -370,9 +408,9 @@
 %---------------------------------------------------------------------------%
 %- define spacing and length
 \def\@dotsep{1.5mu}% spacing for dots
-\def\@pnumwidth{2em}% spacing between titles and page numbers
+\def\@pnumwidth{0em}% spacing between titles and page numbers ->改成0符合zuel要求
 \def\@tocrmarg{2em}% right margin indentation
-\def\@chaptervspace{1ex}% spacing between chapter titles
+\def\@chaptervspace{1ex}% spacing between chapter titles ->已符合zuel要求
 %- redefine dottedtocline from classes.dtx and latex.ltx
 \renewcommand*{\@dottedtocline}[5]{% [<level>,<indent>,<numwidth>,<title>,<page>]
     \ifnum #1>\c@tocdepth \else

@@ -1,10 +1,10 @@
 --- 
 # 论文标题
 title: '中南财经政法大学本科生学位论文 bookdown 模板（非官方）'
-etitle: 'R bookdownplus'
+etitle: 'Zhongnan University of Economics and Law undergraduate graduation thesis template'
 # 论文作者
-author: "author"
-eauthor: 'dapeng'
+author: "donk3yzz"
+eauthor: 'Feng, Shengshi'
 # 封面日期
 chinesedate: "2018 年 9 月"
 englishdate: 'September, 2018'
@@ -28,7 +28,7 @@ englishthesistype: 'thesis' # 论文类型： thesis, dissertation
 ckeywords: '排版，文档类'
 ekeywords: '\hologo{LaTeX2e}, \CTeX{}, bookdown'
 # 摘要
-cabstract: 这里写中文摘要。啊不可挡家真的好。
+cabstract: 这里写中文摘要。啊不可挡家真的好。测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
 eabstract: Abstract in English. R bookdownplus is amazing.
 
 site: bookdown::bookdown_site
