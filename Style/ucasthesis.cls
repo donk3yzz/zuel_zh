@@ -339,8 +339,25 @@
     \end{center}
     \clearpage
     \if@twoside
-      \thispagestyle{empty}
-      \cleardoublepage[empty]
+        \thispagestyle{empty}
+        \ifucas@versioninfo
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+        \fi
+        \cleardoublepage[empty]
+    \else
+        \ifucas@versioninfo
+            \thispagestyle{empty}
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+            %\cleardoublepage[empty]
+        \fi
     \fi
 }
 
@@ -389,7 +406,24 @@
     \clearpage
     \if@twoside
         \thispagestyle{empty}
+        \ifucas@versioninfo
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+        \fi
         \cleardoublepage[empty]
+    \else
+        \ifucas@versioninfo
+            \thispagestyle{empty}
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+            \cleardoublepage[empty]
+        \fi
     \fi
 }
 %---------------------------------------------------------------------------%

@@ -11,7 +11,7 @@
 %---------------------------------------------------------------------------%
 %->> Document class declaration
 %---------------------------------------------------------------------------%
-\documentclass[doublesided]{Style/ucasthesis}%
+\documentclass[singlesided]{Style/ucasthesis}%
 %- Multiple optional arguments:
 %- [<singlesided|doublesided|printcopy>]% set one or two sided eprint or print
 %- [draftversion]% show draft version information
@@ -147,19 +147,20 @@
 %-> 生成封面
 %-
 \maketitle% 生成中文封面
-\makeenglishtitle% 生成英文封面
+%\makeenglishtitle% 生成英文封面
 %-
 %-> 作者声明
 %-
-\makezueltitle% 生成中南财经政法大学论文标题面
+%
 %
 \makedeclaration% 生成声明页
+\makezueltitle% 生成中南财经政法大学论文标题面
 %-
 %-> 中文摘要
 %-
 \chapter*{摘\quad 要}\chaptermark{摘\quad 要}% 摘要标题
 \setcounter{page}{1}% 开始页码
-\pagenumbering{Roman}% 页码符号
+\pagenumbering{arabic}% 页码符号
 
 $cabstract$
 
@@ -189,6 +190,8 @@ $eabstract$
 %-
 %-> Mainmatter
 %-
+
+\setcounter{page}{1}
 \mainmatter% initialize the environment
 $body$
 
