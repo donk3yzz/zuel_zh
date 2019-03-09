@@ -330,11 +330,12 @@
 
         \textit{\zihao{3} \ \ucas@value@englishauthor\ }
 
-        \vspace*{1ex}
+        \vspace*{\stretch{3}}
 
-        %{ \zihao{3} \bfseries \ucas@value@chinesedate }
+        {\zihao{3} \bfseries \ \ucas@value@chinesedate  \ }
 
-        %\vspace*{2ex}
+        \vspace*{\stretch{1}}
+
     \end{center}
     \clearpage
     \if@twoside
