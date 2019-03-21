@@ -25,10 +25,10 @@ edegreetype: 'Natural Science' #学位类别：Philosophy, Natural Science, Engi
 # 论文类型
 englishthesistype: 'thesis' # 论文类型： thesis, dissertation
 # 关键词
-ckeywords: '排版，文档类'
+ckeywords: '排版；文档类'
 ekeywords: '\hologo{LaTeX2e}, \CTeX{}, bookdown'
 # 摘要
-cabstract: 这里写中文摘要。啊不可挡家真的好。测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+cabstract: 这里写中文摘要。啊不可挡家真的好。
 eabstract: Abstract in English. R bookdownplus is amazing.
 
 site: bookdown::bookdown_site
