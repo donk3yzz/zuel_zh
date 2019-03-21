@@ -360,7 +360,49 @@
         \fi
     \fi
 }
+%---------------------------------------------------------------------------%
+\newcommand{\cabstract}[2]{%
+    \clearpage
+    %\thispagestyle{empty}
+    \begin{center}
+        \bfseries\zihao{-2}
+        \vspace{2ex}
+        \ucas@label@abstract
+        \vspace{1ex}
+    \end{center}
 
+    \setlength{\parindent}{2em}
+    {#1}
+
+    \vspace{\baselineskip}
+    \hspace{0em}
+    {\bfseries \zihao{-2} \ucas@label@keywords} {#2}
+
+    \clearpage
+    \if@twoside
+        \thispagestyle{empty}
+        \ifucas@versioninfo
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+        \fi
+        \cleardoublepage[empty]
+    \else
+        \ifucas@versioninfo
+            \thispagestyle{empty}
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+            %\cleardoublepage[empty]
+        \fi
+    \fi
+}
+%---------------------------------------------------------------------------%
+%\newcommand{\eabstract}[][]{}
 %---------------------------------------------------------------------------%
 %->> Author's declaration
 %---------------------------------------------------------------------------%
@@ -433,11 +475,11 @@
 \newcommand{\keywords}[1]{%
     \vspace{\baselineskip}
     \hspace{0em}
-    {\bfseries \ucas@label@keywords} #1}
+    {\bfseries \zihao{-2} \ucas@label@keywords} #1}
 %- define engish keywords
 \newcommand{\englishkeywords}[1]{%
-    \vspace{\baselineskip}
-    \noindent {\bfseries \ucas@label@englishkeywords} #1}
+    \vspace{\baselineskip} 
+    \noindent {\bfseries \zihao{-3} \ucas@label@englishkeywords} #1}
 %---------------------------------------------------------------------------%
 %->> Configure table of contents
 %---------------------------------------------------------------------------%
