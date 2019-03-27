@@ -1,9 +1,13 @@
 
-# 结果与讨论 {#results}
+# 开始使用 {#start}
 
-结了个果。
+## 使用环境
+为了保证你在使用本模板时有一个愉快的体验，你的电脑应该配置有：
+ - 3.5.0版本以上的R
+ - 最新版本的Rstudio
+ - 2.7版本以上的pandoc
+ - 最新版本的TinyTex（推荐，相关内容可以参考____待补充 ）
 
+## 第一次使用 {#first-use}
 
-# 结论 {#conclusion}
-
-盖棺定论。
+在配置好上面的环境之后，你可以在[https://github.com/donk3yzz/zuel_zh]下载本模板，然后打开模板的`bookdown-plus.rproj`，点击Rstudio中的`build book`或按快捷键`ctrl+shift+b`，文档会开始编译并且下载需要的Tex包，这一过程通常要持续几分钟，下载并编译完成后`_book/zuel_zh.pdf`即论文模板的成稿。
