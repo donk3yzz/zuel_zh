@@ -13,16 +13,15 @@
 你可以在一对`$`中间插入行内LaTex数学表达式，例如`$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$`会输出$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$，或者在一对`$$`中插入行间数学表达式，例如`$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$` 会输出 $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$。
 
 同样，你还可以在`$ $`或`$$ $$`中间使用其他数学环境，比如
-```
+
+``` array
 $$\begin{array}{ccc}
 x_{11} & x_{12} & x_{13}\\
 x_{21} & x_{22} & x_{23}
 \end{array}$$
 ```
-$$\begin{array}{ccc}
-x_{11} & x_{12} & x_{13}\\
-x_{21} & x_{22} & x_{23}
-\end{array}$$
+
+
 
 你可以引用更多的数学环境如矩阵、行列式等等，详情可以参考latex中文简介
 
@@ -30,46 +29,48 @@ x_{21} & x_{22} & x_{23}
 
 为了有效的给数学公式标数字且引用，你可以在公式的数学环境中加入标签`(\#eq:标签)`，并引用他们，例如：
 
-```
+```latex
 \begin{equation} 
   f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
   (\#eq:binom)
 \end{equation}
+
 ```
 将得到：
-$$
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  (\#eq:binom)
-\end{equation}
-$$
+
+
+
 那么你就可以使用`\@ref(eq:binom)`来引用此公式，例如见\@ref(eq:binom)
 
 ## 定理与证明{#theorems-proof}
 
 bookdown中支持另一种定理环境，是基于code chunk来完成的，例如
+
 ```
 ```{theorem}
 这是一条定理
 ```
 ```
+
 输出结果为：
+
 ```{theorem}
 这是一条定理
 ```
+
 在theorem环境中你还可以设置另外两个参数`name=''`和`label=''`，他们分别定义了theorem环境的定理名称和引用标签，例如：
-```
+
+```theorem
 ```{theorem, label='pyth', name="勾股定理"}
 
 对于一个直角三角形，如果 $c$三角形的斜边而 $a$和 $b$分别为三角形的直角边，则有：
 $$a^2 + b^2 = c^2$$
 ```
 ```
+
 在引用时你可以使用`\@ref(prefix:label)`，prefix是定理环境的简写，对于theorem为thm，那么我们要引用此定理，就可以用`\@ref(thm:pyth)`，即，见定理\@ref(thm:pyth)
 
 对于更多的定理环境以及他们对应的prefix可以见[theorems](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#theorems)。
-
-
 
 ## 图片
 
@@ -81,4 +82,33 @@ plot(pressure, pch = 19, type = "b")
 ```
 
 当然，在使用LaTex制作论文并插入图片时，你几乎不可避免的会遇到图片浮动的问题，即图片可能会出现在文章的其他位置。如果你不常使用LaTex并且不希望这种情况发生，你应该注意图片的浮动问题，通过修改图片的尺寸来解决这个问题。
+
+和前面的定理环境相似，你也可以通过chunk option对代码块设定标签并在后面进行引用，同时你还可以使用更多knitr中R code chunk的设定来对图片进行更好的控制。
+
+
+
+```{r pressure, fig.caption = '这是一个用knitr chunk option 设定的图像', fig.width = 6, fig.asp = 0.7, fig.aligin = 'center'}
+par(mar = c(4, 4, 0.1, 0.1))
+plot(pressure, pch = 19, type = "b")
+```
+在输出这个图片时，我们使用了`fig.cap`来设定图片标题，用`fig.width`设定了图片的宽度，用`fig.asp = 0.7`设定图片的长宽比例固定在0.7，`fig.aligin = 'center'`令图片居中。你还可以使用其他的R chunk option来对图片进行设置。更多的设置可以见[option-plots](https://yihui.name/knitr/options/#plots)。
+
+## 插入本地图片
+
+在使用Rmarkdown的过程中，你同样可以使用markdown/LaTex/html的语法插入本地图片，不过我们更推荐你使用`knitr::include_graphics()`，主要原因有：
+
+1. 你不需要担心文档的输出格式，`knitr::include_graphics()`可以根据你的文档输出格式来自适应的选择输出函数`![]()`（markdown）、`\includegraphics`（LaTex）或是其他的输出函数；
+2. 在使用knitr函数的过程中，你可以像上面一样轻松的使用chunk option来对图片进行设定和约束；
+3. 当输出PDF文件时，`include_graphics()`可以自动帮助你将原有的png或jpg图片替换为pdf格式，可以在输出pdf文档时获得更好的体验。
+
+## 表格
+
+### 回归结果
+
+```{r}
+#install.packages('broom')
+library(broom)
+fit <- lm(Sepal.Width ~ Petal.Length + Petal.Width, iris)
+tidy(fit)
+```
 

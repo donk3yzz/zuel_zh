@@ -108,6 +108,22 @@
 %---------------------------------------------------------------------------%
 %->> Document content
 %---------------------------------------------------------------------------%
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
 %-
 %-> Frontmatter: title page, abstract, content list, symbol list, preface
@@ -195,192 +211,228 @@
 \mainmatter% initialize the environment
 \mainmatter
 
+\hypertarget{introduction}{%
+\chapter{引言}\label{introduction}}
+
+作为一个懒人，本人比较喜欢用一些工作减少自己的重复性劳动的时间，然鹅往往为了这些东西消耗了更多时间，本篇就是这么个例子。
+
+这是一个基于\texttt{bookdownplus-ucas\_zh}修改来的zuel毕业论文模版，已经基本上定制好了我财毕业论文的基本要求，所以在使用时可以体会markdown标记符号的简洁性，\texttt{knitr}输出R代码结果和包中的一些其他的函数，LaTex数学公式和交叉引用\ldots{}\ldots{}使用者可以在掌握一些LaTex排版知识后专心于论文写作。
+
+除此之外，使用本模板的同时推荐使用\texttt{tinytex}，它是一个基于TexLive改造的、非常节省系统空间的LaTex发行版，对于R用户，它可以对在knit过程中用到却没有的安装LaTex包自动下载，十分方便。
+
+同时，bookdown包的输出方式除了pdf之外，还包括word、html、Gitbook等常见格式。除了论文与书籍的写作之外，你也可以在\texttt{bookdown-demo}或\texttt{bookdownplus}中寻找一些明信片之类的模板。
+
+应该值得注意的是，本模板是在\texttt{bookdownplus-ucas\_zh}基础上调参和略微修改之后的结果，你可以在项目内看到各种属于原模板的痕迹，同时由于本人也没有系统学习过LaTex知识，代码规范方面也是心有余而力不足，所以本模板除了方便的输出ZUEL毕业论文以外没有任何参考价值。如果在使用中遇到问题，欢迎在GitHub issue中提出。
+
+\hypertarget{acknowlage}{%
+\chapter{致谢}\label{acknowlage}}
+
+首先要感谢yihui，毕竟创世神；还有zhao peng，他改造了ucas毕业论文的LaTex模板使之适用于bookdown，并在我准备对模板继续改造时提供了非常关键的帮助。
+
+追本溯源的话，应该还有pandoc，甚至Ctex的开发者，就不多言了。
+
+\hypertarget{start}{%
+\chapter{开始使用}\label{start}}
+
 \hypertarget{section}{%
-\chapter{引言}\label{section}}
+\section{使用环境}\label{section}}
 
-很高兴地宣布，我的 R 语言扩展包 `bookdownplus' (Zhao \protect\hyperlink{ref-R-bookdownplus}{2017}) 在 CRAN 正式发布了。
+为了保证你在使用本模板时有一个愉快的体验，你的电脑应该配置有：
+- 3.5.0版本以上的R
+- 最新版本的Rstudio
+- 2.7版本以上的pandoc
+- 最新版本的TinyTex（推荐，相关内容可以参考\_\_\_\_待补充 ）
 
-bookdownplus 是对 bookdown 包 (Xie \protect\hyperlink{ref-R-bookdown}{2016}) 的增强和简化。bookdown 就好比 Microsoft Word 或 LaTeX，可以用来写文档，而 bookdownplus 提供了很多有用的模板，可以很方便地在 bookdown 平台写期刊论文、学位论文、学术海报、化学分子式、信件、日记、日历、诗集、吉他谱等各种常用文档和书籍。这是功能上的增强（+）。
+\hypertarget{first-use}{%
+\section{第一次使用}\label{first-use}}
 
-bookdownplus 使用时只需指定一个模板，给定作者和书名，就可以一键生成模板文件，用户在模板文件里照猫画虎写自己的文字就可以了，不必再花力气上网找模板、设置 YAML 和 LaTeX。这是操作上的简化（-）。
+在配置好上面的环境之后，你可以在{[}\url{https://github.com/donk3yzz/zuel_zh}{]}下载本模板，然后打开模板的\texttt{bookdown-plus.rproj}，点击Rstudio中的\texttt{build\ book}或按快捷键\texttt{ctrl+shift+b}，文档会开始编译并且下载需要的Tex包，这一过程通常要持续几分钟，下载并编译完成后\texttt{\_book/zuel\_zh.pdf}即论文模板的成稿。
 
-bookdownplus 各个模板的使用方法详见 \href{https://bookdown.org/baydap/bookdownplus}{R bookdownplus Textbook}。这本电子书本身就是用 bookdownplus 生成的，尤其是它的 \href{https://bookdown.org/baydap/bookdownplus/bookdownplus.pdf}{pdf 版本}很美观。此书的源码开放，可以作为使用 bookdownplus写书的示例。
+\hypertarget{bookdown}{%
+\chapter{bookdown组件}\label{bookdown}}
 
-\begin{figure}
+本章内容包括在使用模板撰写论文时常用的bookdown组件，包括代码块、图片、表格、引用、数学定理与方程。本章的大部分内容翻译自https://bookdown.org/yihui/bookdown/components.html。由于bookdown的建立是基于pandoc的，我们从一些pandoc语法开始。
 
-{\centering \includegraphics[width=0.8\linewidth]{ucas_zh_files/figure-latex/co2-1} 
-
-}
-
-\caption{用 R 语言画个图试试}\label{fig:co2}
-\end{figure}
-
-图 \ref{fig:co2} 是 CO\textsubscript{2} 数据。
-
-表 \ref{tab:tabair} 是空气质量数据。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(airquality), }\DataTypeTok{caption =} \StringTok{'空气质量数据。'}\NormalTok{,}
-                   \DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}[t]
-
-\caption{\label{tab:tabair}空气质量数据。}
-\centering
-\begin{tabular}{rrrrrr}
-\toprule
-Ozone & Solar.R & Wind & Temp & Month & Day\\
-\midrule
-41 & 190 & 7.4 & 67 & 5 & 1\\
-36 & 118 & 8.0 & 72 & 5 & 2\\
-12 & 149 & 12.6 & 74 & 5 & 3\\
-18 & 313 & 11.5 & 62 & 5 & 4\\
-NA & NA & 14.3 & 56 & 5 & 5\\
-\addlinespace
-28 & NA & 14.9 & 66 & 5 & 6\\
-\bottomrule
-\end{tabular}
-\end{table}
+\hypertarget{markdown}{%
+\section{markdown语法}\label{markdown}}
 
 \hypertarget{section-1}{%
-\chapter{材料与方法}\label{section-1}}
+\subsection{行内样式}\label{section-1}}
+
+你可以通过\texttt{\_斜体\_}或\texttt{*斜体*}来使用\emph{斜体}；用\texttt{**粗体**}或\texttt{\_\_粗体\_\_}来使用\textbf{粗体}。两个\texttt{\textasciitilde{}}中间的文字会变为下标如\texttt{X\textasciitilde{}1\textasciitilde{},X\textasciitilde{}2\textasciitilde{},\textbackslash{}cdots,X\textasciitilde{}n\textasciitilde{}}，会生成X\textsubscript{1},X\textsubscript{2},\cdots,X\textsubscript{n}；同样俩个\texttt{\^{}}间的文字会变为上标如\texttt{X\^{}2\^{}}会生成X\textsuperscript{2}。超链接将使用\texttt{{[}text{]}(link)}创建，如\texttt{{[}RStudio{]}(https://www.rstudio.com)}\href{https://www.rstudio.com}{RStudio}。可以使用\texttt{\^{}{[}{]}}添加脚注，如\texttt{\^{}{[}这是一个脚注{]}}\footnote{这是一个脚注}
 
 \hypertarget{section-2}{%
-\section{准备}\label{section-2}}
+\subsection{数学表达式}\label{section-2}}
 
-在开始前，需要安装 R, RStudio, bookdown，和其他依赖的软件和包(例如 \texttt{Pandoc}, LaTeX, \texttt{rmarkdown}, \texttt{rticle}, \texttt{knitr}等)，作为准备。详见 \href{https://bookdown.org/yihui/bookdown/}{bookdown 官方手册}。
+你可以在一对\texttt{\$}中间插入行内LaTex数学表达式，例如\texttt{\$f(k)\ =\ \{n\ \textbackslash{}choose\ k\}\ p\^{}\{k\}\ (1-p)\^{}\{n-k\}\$}会输出\(f(k) = {n \choose k} p^{k} (1-p)^{n-k}\)，或者在一对\texttt{\$\$}中插入行间数学表达式，例如\texttt{\$\$f(k)\ =\ \{n\ \textbackslash{}choose\ k\}\ p\^{}\{k\}\ (1-p)\^{}\{n-k\}\$\$} 会输出 \[f(k) = {n \choose k} p^{k} (1-p)^{n-k}\]。
 
-\hypertarget{section-3}{%
-\section{安装}\label{section-3}}
-
-准备完毕后，就可以安装 bookdownplus 了。可以安装稳定版：
+同样，你还可以在\texttt{\$\ \$}或\texttt{\$\$\ \$\$}中间使用其他数学环境，比如
 
 \begin{verbatim}
-install.packages("bookdownplus")
+$$\begin{array}{ccc}
+x_{11} & x_{12} & x_{13}\\
+x_{21} & x_{22} & x_{23}
+\end{array}$$
 \end{verbatim}
 
-或开发版：
+你可以引用更多的数学环境如矩阵、行列式等等，详情可以参考latex中文简介
 
-\begin{verbatim}
-devtools::install_github("pzhaonet/bookdownplus")
-\end{verbatim}
+\hypertarget{bookdownmarkdown}{%
+\section{bookdown支持的markdown拓展}\label{bookdownmarkdown}}
 
-\hypertarget{section-4}{%
-\section{生成模板文件}\label{section-4}}
-
-接着，在 R 中运行下面的代码：
-
-\begin{verbatim}
-bookdownplus::bookdownplus()
-\end{verbatim}
-
-这时，在你的工作目录（\texttt{getwd()}），会得到一些模板文件（如 \texttt{index.Rmd}，\texttt{body.Rmd}， \texttt{bookdownplus.Rproj}） 和文件夹。
-
-\hypertarget{section-5}{%
-\section{编译成书}\label{section-5}}
-
-用 RStudio 打开 \texttt{bookdownplus.Rproj}文件，然后按 \texttt{ctrl+shift+b}，Duang！你就得到模板书 \texttt{*.pdf}了！保存在 \texttt{\_book/} 文件夹里。
-
-\hypertarget{section-6}{%
-\section{你的文字}\label{section-6}}
-
-在 \texttt{index.Rmd} 和 \texttt{body.Rmd} 里写你自己的文字，享受写书的快乐吧！自古皆死，不朽者文。
-
-\hypertarget{section-7}{%
-\section{更多输出格式}\label{section-7}}
-
-模板默认生成的书是pdf格式。`bookdownplus' 从 1.0.3 开始，可以很方便地输出更多格式，包括国内最常见的 'word'格式，网页'html'格式和电子书'epub'格式，只需运行：
+为了有效的给数学公式标数字且引用，你可以在公式的数学环境中加入标签\texttt{(\textbackslash{}\#eq:标签)}，并引用他们，例如：
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bookdownplus}\OperatorTok{::}\KeywordTok{bookdownplus}\NormalTok{(}\DataTypeTok{template =} \StringTok{'article'}\NormalTok{, }
-    \DataTypeTok{more_output =} \KeywordTok{c}\NormalTok{(}\StringTok{'html'}\NormalTok{, }\StringTok{'word'}\NormalTok{, }\StringTok{'epub'}\NormalTok{))}
+\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\}}\SpecialStringTok{ }
+\SpecialStringTok{  f}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(k}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{) = }\SpecialCharTok{\textbackslash{}binom}\SpecialStringTok{\{n\}\{k\} p^k}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(1-p}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{)^\{n-k\}}
+\SpecialStringTok{  (}\SpecialCharTok{\textbackslash{}#}\SpecialStringTok{eq:binom)}
+\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
-就可以在 \texttt{\_book/} 文件夹里看到这些文件了。
+将得到：
 
-网页格式可以极其方便地免费发布到 \href{https://bookdown.org}{bookdown.org}，只需运行：
+那么你就可以使用\texttt{\textbackslash{}@ref(eq:binom)}来引用此公式，例如见\eqref{eq:binom}
 
-\begin{verbatim}
-bookdown::publish_book()
-\end{verbatim}
+\hypertarget{theorems-proof}{%
+\section{定理与证明}\label{theorems-proof}}
 
-这里是 bookdown 书籍的大本营。
-
-\hypertarget{section-8}{%
-\section{更多建议}\label{section-8}}
-
-我开发的另外两个 R 包可以配合 `bookdown' 使用：
-
-\begin{itemize}
-\item
-  mindr，可以从 markdown 或 R markdown 格式的书稿中提取纲要，并且生成思维导图。
-\item
-  pinyin，可以为书稿的章节标题自动生成\href{https://bookdown.org/yihui/bookdown/cross-references.html}{`\{\#ID\}'}。如果标题里含有汉字，就会自动转换成拼音。
-\end{itemize}
-
-具体用法见他们的帮助信息。这两个包已经在 CRAN正式发布，安装命令是：
+bookdown中支持另一种定理环境，是基于code chunk来完成的，例如
 
 \begin{verbatim}
-install.packages('mindr')
-install.packages('pinyin')`.
+\BeginKnitrBlock{theorem}<div class="theorem"><span class="theorem" id="thm:unnamed-chunk-1"><strong>\label{thm:unnamed-chunk-1} </strong></span>这是一条定理</div>\EndKnitrBlock{theorem}
 \end{verbatim}
 
-祝你玩得愉快！
+输出结果为：
 
-\hypertarget{results}{%
-\chapter{结果与讨论}\label{results}}
+\BeginKnitrBlock{theorem}
+\protect\hypertarget{thm:unnamed-chunk-2}{}{\label{thm:unnamed-chunk-2} }这是一条定理
+\EndKnitrBlock{theorem}
 
-结了个果。
+在theorem环境中你还可以设置另外两个参数\texttt{name=\textquotesingle{}\textquotesingle{}}和\texttt{label=\textquotesingle{}\textquotesingle{}}，他们分别定义了theorem环境的定理名称和引用标签，例如：
 
-\hypertarget{conclusion}{%
-\chapter{结论}\label{conclusion}}
+\begin{verbatim}
+\BeginKnitrBlock{theorem}[勾股定理]<div class="theorem"><span class="theorem" id="thm:pyth"><strong>\label{thm:pyth}  \iffalse (勾股定理) \fi{} </strong></span>
+对于一个直角三角形，如果 $c$三角形的斜边而 $a$和 $b$分别为三角形的直角边，则有：
+$$a^2 + b^2 = c^2$$</div>\EndKnitrBlock{theorem}
+\end{verbatim}
 
-盖棺定论。
+在引用时你可以使用\texttt{\textbackslash{}@ref(prefix:label)}，prefix是定理环境的简写，对于theorem为thm，那么我们要引用此定理，就可以用\texttt{\textbackslash{}@ref(thm:pyth)}，即，见定理\ref{thm:pyth}
 
-\hypertarget{section-9}{%
-\chapter{作者简历及攻读学位期间发表的学术论文与研究成果}\label{section-9}}
+对于更多的定理环境以及他们对应的prefix可以见\href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#theorems}{theorems}。
+
+\hypertarget{section-3}{%
+\section{图片}\label{section-3}}
+
+你可以通过knitr来输出图片并加载至文章中：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\FloatTok{0.1}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{, }\DataTypeTok{type =} \StringTok{"b"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ucas_zh_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+当然，在使用LaTex制作论文并插入图片时，你几乎不可避免的会遇到图片浮动的问题，即图片可能会出现在文章的其他位置。如果你不常使用LaTex并且不希望这种情况发生，你应该注意图片的浮动问题，通过修改图片的尺寸来解决这个问题。
+
+和前面的定理环境相似，你也可以通过chunk option对代码块设定标签并在后面进行引用，同时你还可以使用更多knitr中R code chunk的设定来对图片进行更好的控制。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\FloatTok{0.1}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{, }\DataTypeTok{type =} \StringTok{"b"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ucas_zh_files/figure-latex/pressure-1.pdf}
+在输出这个图片时，我们使用了\texttt{fig.cap}来设定图片标题，用\texttt{fig.width}设定了图片的宽度，用\texttt{fig.asp\ =\ 0.7}设定图片的长宽比例固定在0.7，\texttt{fig.aligin\ =\ \textquotesingle{}center\textquotesingle{}}令图片居中。你还可以使用其他的R chunk option来对图片进行设置。更多的设置可以见\href{https://yihui.name/knitr/options/\#plots}{option-plots}。
+
+\hypertarget{section-4}{%
+\section{插入本地图片}\label{section-4}}
+
+在使用Rmarkdown的过程中，你同样可以使用markdown/LaTex/html的语法插入本地图片，不过我们更推荐你使用\texttt{knitr::include\_graphics()}，主要原因有：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  你不需要担心文档的输出格式，\texttt{knitr::include\_graphics()}可以根据你的文档输出格式来自适应的选择输出函数\texttt{!{[}{]}()}（markdown）、\texttt{\textbackslash{}includegraphics}（LaTex）或是其他的输出函数；
+\item
+  在使用knitr函数的过程中，你可以像上面一样轻松的使用chunk option来对图片进行设定和约束；
+\item
+  当输出PDF文件时，\texttt{include\_graphics()}可以自动帮助你将原有的png或jpg图片替换为pdf格式，可以在输出pdf文档时获得更好的体验。
+\end{enumerate}
+
+\hypertarget{section-5}{%
+\section{表格}\label{section-5}}
+
+\hypertarget{section-6}{%
+\subsection{回归结果}\label{section-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#install.packages('broom')}
+\KeywordTok{library}\NormalTok{(broom)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'broom' was built under R version
+## 3.5.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Sepal.Width }\OperatorTok{~}\StringTok{ }\NormalTok{Petal.Length }\OperatorTok{+}\StringTok{ }\NormalTok{Petal.Width, iris)}
+\KeywordTok{tidy}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   term         estimate std.error statistic  p.value
+##   <chr>           <dbl>     <dbl>     <dbl>    <dbl>
+## 1 (Intercept)     3.59     0.0937     38.3  2.51e-78
+## 2 Petal.Length   -0.257    0.0669     -3.84 1.80e- 4
+## 3 Petal.Width     0.364    0.155       2.35 2.01e- 2
+\end{verbatim}
+
+\hypertarget{section-7}{%
+\chapter{作者简历及攻读学位期间发表的学术论文与研究成果}\label{section-7}}
 
 本科生无需此部分。
 
-\hypertarget{section-10}{%
-\chapter{致谢}\label{section-10}}
+\hypertarget{section-8}{%
+\chapter{致谢}\label{section-8}}
 
 本模板源自 mohuangrui/ucasthesis \LaTeX\{\} 模板\footnote{\url{https://gitlab.com/mohuangrui/ucasthesis}}。感谢！
 
-\hypertarget{references}{%
-\chapter*{References}\label{references}}
-\addcontentsline{toc}{chapter}{References}
-
-\bibliography{bib/bib}
-
 \appendix
 
-\hypertarget{section-11}{%
-\chapter{中南财经政法大学本科生毕业论文规范}\label{section-11}}
+\hypertarget{section-9}{%
+\chapter{中南财经政法大学本科生毕业论文规范}\label{section-9}}
 
 \raggedbottom
 
 为了进一步规范我校本科生毕业论文（设计）的撰写工作，提高论文撰写质量与规范化水平，现根据《中南财经政法大学本科生毕业论文（设计）管理办法》的要求，参照中国国家标准标准化管理委员会所发布的《科学技术报告、学位论文和学术论文的编写格式》（GB／T7713-1987）和《文后参考文献著录规则》（GB/T7714-2005）等标准，以及中华人民共和国新闻署和中国国家语言文字工作委员会等机构发布的相关规则，结合我校学科结构上的特点，特制定本规范。
 
-\hypertarget{section-12}{%
-\section{毕业论文（设计）内容及要求}\label{section-12}}
+\hypertarget{section-10}{%
+\section{毕业论文（设计）内容及要求}\label{section-10}}
 
 毕业论文（设计）应包括以下项目：（1）封面；（2）作者声明；（3）论文（设计）题目及署名；（4）中外（英）文摘要及关键词；（5）目录；（6）正文；（7）注释；（8）主要参考文献；（9）附录（非必选项）；（10）后记（非必选项）。以上各项目的基本内容与要求如下：
 
-\hypertarget{section-13}{%
-\subsection{封面}\label{section-13}}
+\hypertarget{section-11}{%
+\subsection{封面}\label{section-11}}
 
 \textbf{封面信息。} 封面信息包括学校名称与本科生毕业论文（设计）的全称、毕业论文标题（含毕业设计，以下简称论文）、学生个人信息、指导老师信息，以及论文完成（提交答辩）时间等。
 
 \textbf{封面格式。} 封面格式由学校统一设计、印制后发放。封面上的题目、姓名、学号、班级、年级、专业、院系、指导教师姓名及职称等内容，以及论文完成时间。封面最好是打印填列，所有项目填列的内容均须排列整齐、美观。
 
-\hypertarget{section-14}{%
-\subsection{作者声明}\label{section-14}}
+\hypertarget{section-12}{%
+\subsection{作者声明}\label{section-12}}
 
 \textbf{声明内容。} 作者声明是论文的著作权人对论文形成的知识产权与使用的知识产权，以及可能产生的相应法律责任所做的公开表述和承诺，其内容包括声明文本和作者个人信息（专业、学号、姓名、时间）等。作者声明的内容由学校统一拟定。
 
@@ -388,8 +440,8 @@ install.packages('pinyin')`.
 
 \textbf{声明生效。} 须由论文作者在作者签名处用中文手写签字，声明方才有效。时间最好手写。
 
-\hypertarget{section-15}{%
-\subsection{论文（设计）题目及署名}\label{section-15}}
+\hypertarget{section-13}{%
+\subsection{论文（设计）题目及署名}\label{section-13}}
 
 \textbf{题名排列。} 毕业论文（设计）题目、署名与完成时间接``作者声明''页后单设一页。
 
@@ -401,11 +453,11 @@ install.packages('pinyin')`.
 
 \textbf{时间格式。} 毕业论文（设计）完成时间以``XXXX年X月X日''格式列页底，三号宋体，加粗，段后空两行，与签名居中对齐。
 
-\hypertarget{section-16}{%
-\subsection{中外（英）文摘要及关键词}\label{section-16}}
+\hypertarget{section-14}{%
+\subsection{中外（英）文摘要及关键词}\label{section-14}}
 
-\hypertarget{section-17}{%
-\subsubsection{中文摘要及关键词}\label{section-17}}
+\hypertarget{section-15}{%
+\subsubsection{中文摘要及关键词}\label{section-15}}
 
 \textbf{摘要内容。} 摘要是论文内容的简要陈述，应尽量反映论文的主要信息，主要包括研究意义、目的、方法、成果和重要结论。摘要具有相对的独立性和完整性，其间不应含图表和注释，具有独立性和完整性。若论文摘要中需分层次表述内容时，一般应采用文字表达的方式，而不宜使用数字表达的方式。中文摘要字数一般为500～800字。
 
@@ -415,8 +467,8 @@ install.packages('pinyin')`.
 
 \textbf{关键词格式。} 中文``关键词''应当排在``摘要''正文下一自然段。``关键词''前空两格，小二号宋体，加粗，后接冒号``：''，各个关键词用小四号宋体，其间用分号``；''分隔，段前空一行。
 
-\hypertarget{section-18}{%
-\subsubsection{外（英）文摘要与关键词}\label{section-18}}
+\hypertarget{section-16}{%
+\subsubsection{外（英）文摘要与关键词}\label{section-16}}
 
 ``外（英）文摘要及关键词''的翻译信息应在``中文摘要及关键词''页后另起一页。
 
@@ -424,15 +476,15 @@ install.packages('pinyin')`.
 
 \textbf{外文关键词格式。} 外文关键词排在外文摘要正文下一自然段。英文用``Key words''，小三号字体，加粗，左顶格对齐，后接英文状态下的冒号``:''，各个关键词用小四号字体，其间用英文状态下的分号``;''分隔。第一个关键词的第一个字母大写，段前空一行。
 
-\hypertarget{section-19}{%
-\subsection{目录}\label{section-19}}
+\hypertarget{section-17}{%
+\subsection{目录}\label{section-17}}
 
 \textbf{目录内容。} 目录内容应当层次清晰，并与正文题序层次、标题内容完全一致。主要包括引论（或导论、绪论）、正文主体（一般只到二级标题，即条次与款次）、结语（或结论）、主要参考文献、附录和后记等项。
 
 \textbf{目录格式。} 目录应单设一页。``目录''两字间空两格，小二号宋体，加粗，占一行，居中，段前段后各空一行，结尾处无标点符号。目录下各项内容应标明与论文正文中相应内容相互对应的页序，标题与页序之间的空格应当用中圆点填充。目录内容只列两级：条次级（即``一、''）用四号黑体，加粗，左顶格；款次级（即``（一）''）用小四号宋体，左边缩进两个空格。目录各项相应页序统一为右顶格对齐。
 
-\hypertarget{section-20}{%
-\subsection{正文}\label{section-20}}
+\hypertarget{section-18}{%
+\subsection{正文}\label{section-18}}
 
 论文正文部分包括引论（或导论、绪论）、论文主体及结语（或结论）三个主要部分，总字数不少于10 000字。三个主要部分的基本要求如下：
 
@@ -442,8 +494,8 @@ install.packages('pinyin')`.
 
 \textbf{结语（可选）。} 结语部分是整个论文的总结，应以简练的文字说明论文所做的工作以及所得到的主要结论，也可涉及论文存在的研究局限和需要进一步研究的问题等。结语一般不宜过长。它可以作为一个单独条次排列，``结语''两字间空两格，但在标题前不加题序，规范要求同条次。如果结语内容不长，也可不加``结语''字样，而只是在正文后另起自然段写出结语类的文字即可（如：综上所述\ldots{}\ldots{}），但段前空一行。
 
-\hypertarget{section-21}{%
-\subsection{注释}\label{section-21}}
+\hypertarget{section-19}{%
+\subsection{注释}\label{section-19}}
 
 \textbf{注释范围。} 论文中的注释主要用于以下三个方面：（1）直接引文注释。即文中引用他人原话和相关资料所载数据时对出处的交待。（2）间接引用注释。即文中吸收他人观点时对出处的交待。（3）内容说明注释。即对文中需要补充说明而在正文中又不便详细阐述的其他问题所做出的解释。
 
@@ -453,8 +505,8 @@ install.packages('pinyin')`.
 
 \textbf{注释格式。} 注释的内容用小五号宋体（即通用word软件的默认标准）。注释中凡是涉及引用相关文献时，其标示内容及格式规范与后述参考文献的要求相同。
 
-\hypertarget{section-22}{%
-\subsection{主要参考文献}\label{section-22}}
+\hypertarget{section-20}{%
+\subsection{主要参考文献}\label{section-20}}
 
 \textbf{涉及范围。} 主要参考文献是指与论文内容有密切关系，且在写作中部分参考或者借鉴了他人文献的观点和材料时，为了对其成果表示尊重，同时也为了指明主要资料出处并便于检索而列出的一项论文要素。其范围不仅包括注释中已涉及的文献，还可包括论文写作过程所涉及的其它文献。
 
@@ -532,25 +584,25 @@ l其他文献
 
 论文写作中，若还涉及到科技报告和专利等其他类型的文献时，可以根据需要自行参考国家标准管理委员会2005年10月1日发布的中华人民共和国国家标准------《文后参考文献著录规则》（GB/T7714-2005，可上网自选阅读）的要求作相应处理，具体内容与格式此处略。
 
-\hypertarget{section-23}{%
-\subsection{附录（非必选项）}\label{section-23}}
+\hypertarget{section-21}{%
+\subsection{附录（非必选项）}\label{section-21}}
 
 \textbf{附录内容。} 附录为非必选项，它的主要内容可包括放在正文内显得过于冗长的公式推导、复杂的数据图表、论文使用的专门符号内涵释义、计量单位缩写表、专有名词缩写表和检索表，以及软件程序的有关说明等。若无需要，也可不单列此项。
 
 \textbf{附录格式。} 附录应另起一页。``附录''字样占一行，字间空两格，小二号宋体，加粗，居中，结尾处无标点符号，段前段后空一行。附录内容版面要求与正文相同，但其编序前应当冠以``附录''两字（如：``附录一''、``附录X''）。``附录X''单列一行，左顶格，附录题名列下一行，居中，段前段后空一行，格式同条次。
 
-\hypertarget{section-24}{%
-\subsection{后记（非必选项）}\label{section-24}}
+\hypertarget{section-22}{%
+\subsection{后记（非必选项）}\label{section-22}}
 
 \textbf{后记内容。} 后记为非必选项，它的主要内容可以是作者对论文过程的记录与写作感悟，也可以是对指导老师以及给予指导或协助完成毕业论文（设计）工作的组织、个人表示感谢。后记文字要简洁、得体、实事求是，切忌浮夸和庸俗之词。
 
 \textbf{后记格式。} 后记应另起页。``后记''字样占一行，字间空两格，小二号宋体，加粗，居中，结尾处无标点符号，段前段后空一行。后记内容的版面要求与正文相同，文内顺序宜用文字表达。
 
-\hypertarget{section-25}{%
-\section{毕业论文（设计）撰写规范}\label{section-25}}
+\hypertarget{section-23}{%
+\section{毕业论文（设计）撰写规范}\label{section-23}}
 
-\hypertarget{section-26}{%
-\subsection{行文}\label{section-26}}
+\hypertarget{section-24}{%
+\subsection{行文}\label{section-24}}
 
 \textbf{用字规范。} 论文中所用汉字必须使用国家语言文字工作委员会公布的规范汉字，所有文字必须字面清晰，若必须更改，要使用国家新闻出版总署规定的标准校对符号，不能随意涂抺。
 
@@ -560,8 +612,8 @@ l其他文献
 
 \textbf{避免背题。} 论文中凡是单列一行的各级标题均不得背题（即标题出现在某页的最后一行，内容在次页），必要时应强制使用相关软件中另起一页的排版功能。
 
-\hypertarget{section-27}{%
-\subsection{正文主体}\label{section-27}}
+\hypertarget{section-25}{%
+\subsection{正文主体}\label{section-25}}
 
 论文中除``引论（或导论、绪论）''部分和``结语（或结论）''部分不需列出题序外，其他表明论文层级的内容应当统一由题序数字和标题表明相应的层次。若无特别需要，文中不宜用特殊符号来标示论文的各级层次（如：``●''和``■''等）。具体要求如下：
 
@@ -575,8 +627,8 @@ l其他文献
 
 \textbf{其他格式。} 当项次下无目次时，也可在正文的同一段落中用``（1）\ldots{}\ldots{}\ldots{}\ldots{}；（2）\ldots{}\ldots{}\ldots{}\ldots{}；（3）\ldots{}\ldots{}\ldots{}\ldots{}。''等的行文方式列举事项。但若有目次时，应在正文的同一段落中采用``包括\ldots{}\ldots{}\ldots{}\ldots{}、\ldots{}\ldots{}\ldots{}\ldots{}和\ldots{}\ldots{}\ldots{}\ldots{}等。''或``一是\ldots{}\ldots{}\ldots{}\ldots{}；二是\ldots{}\ldots{}\ldots{}\ldots{}；三是\ldots{}\ldots{}\ldots{}\ldots{}。''等类似的行文方式。若在文中使用``首先''、``其次''或``第一''、``第二''等顺序词时，其后不能使用顿号：``、''，而必须使用逗号：``，''。
 
-\hypertarget{section-28}{%
-\subsection{表格}\label{section-28}}
+\hypertarget{section-26}{%
+\subsection{表格}\label{section-26}}
 
 \textbf{表格编序。} 论文中的表格应当统一编序（如：表1），采用方式应与插图和公式的编序方式统一。表序用拉伯数字，且必须连续，不得重复或跳跃。每个表格应拟表名，如：XXXXXX表。
 
@@ -590,8 +642,8 @@ l其他文献
 
 \textbf{表格运用。} 论文中凡运用表格数据时，均应使用``见表X所示''的使用语，不宜用``见上表所示''。
 
-\hypertarget{section-29}{%
-\subsection{插图}\label{section-29}}
+\hypertarget{section-27}{%
+\subsection{插图}\label{section-27}}
 
 \textbf{插图编序。} 论文中的插图要精选。图序方式应与表格和公式的编序方式统一。图序统一用阿拉伯数字（如：图1）且必须连续，不得重复或跳跃。若全文仅有一个插图时，亦可在图题前加``附图''字样。毕业论文（设计）中的插图以及图中文字符号应打印，无法打印时一律用钢笔绘制和标出。
 
@@ -601,8 +653,8 @@ l其他文献
 
 \textbf{插图运用。} 凡在论文中运用插图资料时，均应使用``见图X所示''的使用语，不宜用``见上图所示''。
 
-\hypertarget{section-30}{%
-\subsection{公式}\label{section-30}}
+\hypertarget{section-28}{%
+\subsection{公式}\label{section-28}}
 
 \textbf{公式编序。} 论文中的公式应标注序号并加圆括号，序号一律用阿拉伯数字连续编序，编序方式与表格和插图统一，如：``（式1）''。公式的序号``（式X）''排在公式版面内容居中并靠右侧，且全文所有公式的右边页距应当相等（可统一右缩进两个字符处理）。
 
@@ -612,8 +664,8 @@ l其他文献
 
 \textbf{公式运用。} 论文中凡是运用公式时，或者是对公式的某值内涵进行解释时，均应采用``式X中''的使用语，而不宜用``见上式''、 ``上式中''、``（式X）中''和``式（X）中''。
 
-\hypertarget{section-31}{%
-\subsection{数字}\label{section-31}}
+\hypertarget{section-29}{%
+\subsection{数字}\label{section-29}}
 
 \textbf{年代标示。} 公历世纪、年代、年、月、日和时间均应采用阿拉伯数字，如``2000年''、``2007-03-18''和``20世纪50年代''等，但模糊的年代数可用汉字表示，如``二十世纪五六十年代''等。避免使用``本世纪''和``上世纪''，可用``下世纪''。公历年份不能简写，如``2000年''不能写成``00年''。
 
@@ -625,13 +677,13 @@ l其他文献
 
 \textbf{其他标示。} 其他特殊要素的标示方法按原国家技术监督局1995年12月13日发布的中华人民共和国国家标准------《出版物数字用法的规定》（GB/T 15835-1995）的要求执行。
 
-\hypertarget{section-32}{%
-\subsection{软件}\label{section-32}}
+\hypertarget{section-30}{%
+\subsection{软件}\label{section-30}}
 
 软件设计中的流程图和源程序清单，一般应当按软件文档格式作为``附件''在论文后列出，不列入论文内。特殊情况下不便列出时，可在答辩时展示。
 
-\hypertarget{section-33}{%
-\subsection{其他}\label{section-33}}
+\hypertarget{section-31}{%
+\subsection{其他}\label{section-31}}
 
 \textbf{英文简称。} 论文中有关国际性组织的专有名词英文缩写首次出现时，要用中文写出全称，并在括号内注明英文全称及简写的英文大写字母符号组合，后文才能用英文简称。例如：``2001年，中国加入世界贸易组织（World Trade Organization，简称WTO）后\ldots{}\ldots{}。根据WTO规则要求\ldots{}\ldots{}''。
 
@@ -647,8 +699,8 @@ l其他文献
 
 其他事项。其他未涉及的论文写作中的有关事项，可参照原国家技术监督局1987年发布的GB／7713-1987------《科学技术报告、学位论文和学术论文的编写格式》执行。
 
-\hypertarget{section-34}{%
-\section{毕业论文（设计）的打印要求}\label{section-34}}
+\hypertarget{section-32}{%
+\section{毕业论文（设计）的打印要求}\label{section-32}}
 
 \textbf{版面规格。} 毕业论文用A4纸，一般为纵向排版，单面打印，左边装订。
 
@@ -658,22 +710,22 @@ l其他文献
 
 \textbf{页脚设置。} 论文正文的页脚，从``导论''部分开始，直到``后记''部分为止，连续采用``1''、``2''、``3''\ldots{}\ldots{}等阿拉伯数字顺序编号标示页码，左右各加一连字符``-''，小五号字，宋体，如``-1-''（可自动插入），居中排列。此外，``作者声明''与``论文（设计）题目及署名''不设页脚，``中文摘要及关键词''、``外（英）文摘要及关键词''和``目录''的页脚设置要求均同正文，但各自起序，互不连续。
 
-\hypertarget{section-35}{%
-\section{毕业论文（设计）定稿的装订}\label{section-35}}
+\hypertarget{section-33}{%
+\section{毕业论文（设计）定稿的装订}\label{section-33}}
 
 \textbf{定稿要求。} 毕业论文完成定稿后并经有关的审查程序合格后，若各项基本要素齐全且达到此规范基本要求的，方可印刷、单独装订成册上交。
 
 装订顺序。毕业论文定稿的装订顺序如下：（1）毕业论文（设计）封面；（2）作者声明；（3）论文（设计）题目及署名；（4）中文摘要及关键词；（5）外（英）文摘要及关键词；（6）目录；（7）正文；（8）主要参考文献；（9）附录（非必选项）；（10）后记（非必选项）。
 
-\hypertarget{section-36}{%
-\section{毕业论文（设计）档案整理}\label{section-36}}
+\hypertarget{section-34}{%
+\section{毕业论文（设计）档案整理}\label{section-34}}
 
 档案内容。毕业论文（设计）档案的内容主要包括五个方面：（1）毕业论文（设计）开题报告；（2）毕业论文（设计）写作及答辩过程控制表；（3）毕业论文（设计）初稿；（4）毕业论文（设计）定稿；（5）其他必须保存的相关内容。
 
 档案封装。毕业论文（设计）的资料档案袋一律采用学校统一印制的``中南财经政法大学毕业论文（设计）资料袋''，并在档案袋封面手工填写相应的内容。
 
-\hypertarget{section-37}{%
-\section{附则}\label{section-37}}
+\hypertarget{section-35}{%
+\section{附则}\label{section-35}}
 
 规则解释。本规范的解释权属教务部。
 
@@ -681,12 +733,11 @@ l其他文献
 
 \flushbottom
 
-\hypertarget{refs}{}
-\leavevmode\hypertarget{ref-R-bookdown}{}%
-Xie, Yihui. 2016. \emph{Bookdown: Authoring Books and Technical Documents with R Markdown}. Boca Raton, Florida: Chapman; Hall/CRC. \url{https://github.com/rstudio/bookdown}.
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
 
-\leavevmode\hypertarget{ref-R-bookdownplus}{}%
-Zhao, Peng. 2017. \emph{Bookdownplus: Generate Varied Books and Documents with R 'Bookdown' Package}. \url{https://CRAN.R-project.org/package=bookdownplus}.
+\bibliography{bib/bib}
 
 \end{document}
 %---------------------------------------------------------------------------%
