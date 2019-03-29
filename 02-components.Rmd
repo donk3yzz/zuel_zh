@@ -104,7 +104,22 @@ library(broom)
 fit <- lm(Sepal.Width ~ Petal.Length + Petal.Width, iris)
 tidy(fit)
 ```
-```{r kable-broom, echo = FALSE}
-knitr::kable(tidy(fit))
+
+```{r kable-broom,echo = FALSE}
+knitr::kable(tidy(fit),caption = '回归系数表')
+```
+
+```{r}
+library(dplyr)
+library(huxtable)
+```
+```{r hux-broom}
+fit %>% tidy %>% huxtable() %>% theme_article()
+```
+
+
+```{r,fig.pos='H'}
+fit %>% huxreg() %>% theme_article() %>% 
+  set_caption('huxreg的回归输出方案')
 ```
 

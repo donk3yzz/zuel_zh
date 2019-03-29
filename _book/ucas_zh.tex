@@ -58,9 +58,20 @@
 \newcommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{longtable,booktabs}
-
+%<-huxtable dependencies
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{graphicx,grffile}
+\usepackage{wrapfig}
+\usepackage{siunitx}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{calc}
+\usepackage{placeins}
+\usepackage{pmboxdraw}
+%
 \usepackage{amssymb,amsmath}
-
 %\usepackage{natbib}
 %\bibliographystyle{apalike}
 \newcommand{\VerbBar}{|}
@@ -225,15 +236,23 @@
 \section{使用环境}\label{section}}
 
 为了保证你在使用本模板时有一个愉快的体验，你的电脑应该配置有：
-- 3.5.0版本以上的R
-- 最新版本的Rstudio
-- 2.7版本以上的pandoc
-- 最新版本的TinyTex（推荐，相关内容可以参考\_\_\_\_待补充 ）
+
+\begin{itemize}
+\tightlist
+\item
+  3.5.0版本以上的R
+\item
+  最新版本的Rstudio
+\item
+  2.7版本以上的pandoc
+\item
+  最新版本的TinyTex（推荐，相关内容可以参考\_\_\_\_待补充 ）
+\end{itemize}
 
 \hypertarget{first-use}{%
 \section{第一次使用}\label{first-use}}
 
-在配置好上面的环境之后，你可以在{[}\url{https://github.com/donk3yzz/zuel_zh}{]}下载本模板，然后打开模板的\texttt{bookdown-plus.rproj}，点击Rstudio中的\texttt{build\ book}或按快捷键\texttt{ctrl+shift+b}，文档会开始编译并且下载需要的Tex包，这一过程通常要持续几分钟，下载并编译完成后\texttt{\_book/zuel\_zh.pdf}即论文模板的成稿。
+在配置好上面的环境之后，你可以在\href{https://github.com/donk3yzz/zuel_zh}{donk3yzz/zuel\_zh}下载本模板，然后打开模板的\texttt{bookdown-plus.rproj}，点击Rstudio中的\texttt{build\ book}或按快捷键\texttt{ctrl+shift+b}，文档会开始编译并且下载需要的Tex包，这一过程通常要持续几分钟，下载并编译完成后\texttt{\_book/zuel\_zh.pdf}即论文模板的成稿。
 
 \hypertarget{bookdown}{%
 \chapter{bookdown组件}\label{bookdown}}
@@ -288,6 +307,10 @@ x_{21} & x_{22} & x_{23}
 \end{Shaded}
 
 将得到：
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \label{eq:binom}
+\end{equation}
 
 那么你就可以使用\texttt{\textbackslash{}@ref(eq:binom)}来引用此公式，例如见\eqref{eq:binom}
 
@@ -380,6 +403,10 @@ bookdown中支持另一种定理环境，是基于code chunk来完成的，例�
 ## 3 Petal.Width     0.364    0.155       2.35 2.01e- 2
 \end{verbatim}
 
+\begin{table}[t]
+
+\caption{\label{tab:kable-broom}回归系数表}
+\centering
 \begin{tabular}{l|r|r|r|r}
 \hline
 term & estimate & std.error & statistic & p.value\\
@@ -391,6 +418,220 @@ Petal.Length & -0.2571378 & 0.0669115 & -3.842952 & 0.0001804\\
 Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 \hline
 \end{tabular}
+\end{table}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(huxtable)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'huxtable' was built under R version
+## 3.5.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'huxtable'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     add_rownames
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\OperatorTok{%>%}\StringTok{ }\NormalTok{tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{huxtable}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{theme_article}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+ 
+  \providecommand{\huxb}[2]{\arrayrulecolor[RGB]{#1}\global\arrayrulewidth=#2pt}
+  \providecommand{\huxvb}[2]{\color[RGB]{#1}\vrule width #2pt}
+  \providecommand{\huxtpad}[1]{\rule{0pt}{\baselineskip+#1}}
+  \providecommand{\huxbpad}[1]{\rule[-#1]{0pt}{#1}}
+
+\begin{table}[h]
+\centering
+\begin{threeparttable}
+\begin{tabularx}{0.5\textwidth}{p{0.1\textwidth} p{0.1\textwidth} p{0.1\textwidth} p{0.1\textwidth} p{0.1\textwidth}}
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{(Intercept)}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{ 3.59~}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{0.0937}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{38.3~}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{2.51e-78}\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Length}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -0.257\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.0669\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -3.84\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.00018~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Width}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft  0.364\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.155~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft  2.35\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.0201~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+\end{tabularx}\end{threeparttable}
+
+
+\end{table}
+ 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\OperatorTok{%>%}\StringTok{ }\KeywordTok{huxreg}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{theme_article}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{set_caption}\NormalTok{(}\StringTok{'huxreg的回归输出方案'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+ 
+  \providecommand{\huxb}[2]{\arrayrulecolor[RGB]{#1}\global\arrayrulewidth=#2pt}
+  \providecommand{\huxvb}[2]{\color[RGB]{#1}\vrule width #2pt}
+  \providecommand{\huxtpad}[1]{\rule{0pt}{\baselineskip+#1}}
+  \providecommand{\huxbpad}[1]{\rule[-#1]{0pt}{#1}}
+
+\begin{table}[h]
+\centering
+\begin{threeparttable}
+\captionsetup{justification=centering,singlelinecheck=off}
+\caption{huxreg的回归输出方案}
+\begin{tabularx}{0.5\textwidth}{p{0.25\textwidth} p{0.25\textwidth}}
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\centering \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\centering \textbf{(1)}\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{(Intercept)}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 3.587 ***\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.094)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Length}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -0.257 ***\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.067)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Width}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.364 *~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.155)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{N}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 150~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{R2}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.213~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{logLik}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -69.802~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{AIC}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 147.604~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{2}{!{\huxvb{0, 0, 0}{0}}p{0.5\textwidth+2\tabcolsep}!{\huxvb{0, 0, 0}{0}}}{\parbox[b]{0.5\textwidth+2\tabcolsep-4pt-4pt}{\huxtpad{4pt}\raggedright \textbf{ *** p $<$ 0.001;  ** p $<$ 0.01;  * p $<$ 0.05.}\huxbpad{4pt}}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+\end{tabularx}\end{threeparttable}
+
+
+\end{table}
+ 
 
 \hypertarget{section-7}{%
 \chapter{作者简历及攻读学位期间发表的学术论文与研究成果}\label{section-7}}
