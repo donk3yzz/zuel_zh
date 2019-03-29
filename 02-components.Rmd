@@ -6,21 +6,29 @@
 
 ### 行内样式
 
-你可以通过`_斜体_`或`*斜体*`来使用*斜体*；用`**粗体**`或`__粗体__`来使用**粗体**。两个`~`中间的文字会变为下标如`X~1~,X~2~,\cdots,X~n~`，会生成X~1~,X~2~,\cdots,X~n~；同样俩个`^`间的文字会变为上标如`X^2^`会生成X^2^。超链接将使用`[text](link)`创建，如`[RStudio](https://www.rstudio.com)`[RStudio](https://www.rstudio.com)。可以使用`^[]`添加脚注，如`^[这是一个脚注]`^[这是一个脚注]
+你可以通过`_斜体_`或`*斜体*`来使用*斜体*；用`**粗体**`或`__粗体__`来使用**粗体**。两个`~`中间的文字会变为下标如`X~1~,X~2~,$\cdots$,X~n~`，会生成X~1~,X~2~,$\cdots$,X~n~；同样俩个`^`间的文字会变为上标如`X^2^`会生成X^2^。超链接将使用`[text](link)`创建，如`[RStudio](https://www.rstudio.com)`[RStudio](https://www.rstudio.com)。可以使用`^[]`添加脚注，如`^[这是一个脚注]`^[这是一个脚注]
 
 ### 数学表达式
 
 你可以在一对`$`中间插入行内LaTex数学表达式，例如`$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$`会输出$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$，或者在一对`$$`中插入行间数学表达式，例如`$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$` 会输出 $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$。
 
-同样，你还可以在`$ $`或`$$ $$`中间使用其他数学环境，比如
+同样，你还可以在一对`$`或`$$`中间使用其他数学环境，比如
 
 ``` array
-$$\begin{array}{ccc}
+$$
+\begin{array}{ccc}
 x_{11} & x_{12} & x_{13}\\
 x_{21} & x_{22} & x_{23}
-\end{array}$$
+\end{array}
+$$
 ```
 
+$$
+\begin{array}{ccc}
+x_{11} & x_{12} & x_{13}\\
+x_{21} & x_{22} & x_{23}
+\end{array}
+$$
 
 
 你可以引用更多的数学环境如矩阵、行列式等等，详情可以参考latex中文简介
@@ -37,7 +45,10 @@ x_{21} & x_{22} & x_{23}
 
 ```
 将得到：
-
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation}
 
 
 那么你就可以使用`\@ref(eq:binom)`来引用此公式，例如见\@ref(eq:binom)
@@ -46,27 +57,9 @@ x_{21} & x_{22} & x_{23}
 
 bookdown中支持另一种定理环境，是基于code chunk来完成的，例如
 
-```
-```{theorem}
-这是一条定理
-```
-```
 
 输出结果为：
 
-```{theorem}
-这是一条定理
-```
-
-在theorem环境中你还可以设置另外两个参数`name=''`和`label=''`，他们分别定义了theorem环境的定理名称和引用标签，例如：
-
-```theorem
-```{theorem, label='pyth', name="勾股定理"}
-
-对于一个直角三角形，如果 $c$三角形的斜边而 $a$和 $b$分别为三角形的直角边，则有：
-$$a^2 + b^2 = c^2$$
-```
-```
 
 在引用时你可以使用`\@ref(prefix:label)`，prefix是定理环境的简写，对于theorem为thm，那么我们要引用此定理，就可以用`\@ref(thm:pyth)`，即，见定理\@ref(thm:pyth)
 
@@ -110,5 +103,8 @@ plot(pressure, pch = 19, type = "b")
 library(broom)
 fit <- lm(Sepal.Width ~ Petal.Length + Petal.Width, iris)
 tidy(fit)
+```
+```{r kable-broom, echo = FALSE}
+knitr::kable(tidy(fit))
 ```
 

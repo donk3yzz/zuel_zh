@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.2.25)  28 MAR 2019 17:51
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.2.25)  29 MAR 2019 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -450,11 +450,6 @@ File: ctex.cfg 2018/05/02 v2.4.14 Configuration file (CTEX)
 (c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ifxetex/ifxetex.s
 ty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.s
-ty
-Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count269
 )) (./Style/ucasthesis.cfg
 File: ucasthesis.cfg 2014/10/01 v1.0 class configuration file
 ) (./Style/artratex.sty
@@ -464,6 +459,11 @@ LaTeX Warning: You have requested package `Style/artratex',
 
 Package: artratex 2014/10/01 v0.1 LaTeX macros package
 
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.s
+ty
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count269
+)
 (c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/oberdiek/ifluatex
 .sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
@@ -1405,34 +1405,755 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \fb@frh=\dimen276
 \FrameRule=\dimen277
 \FrameSep=\dimen278
-) (c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2017/10/31 v2.20.4
-\thm@style=\toks34
-\thm@bodyfont=\toks35
-\thm@headfont=\toks36
-\thm@notefont=\toks37
-\thm@headpunct=\toks38
-\thm@preskip=\skip89
-\thm@postskip=\skip90
-\thm@headsep=\skip91
-\dth@everypar=\toks39
+)
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/xelatex/xecjk/xeCJK-listi
+ngs.sty
+Package: xeCJK-listings 2018/04/30 v3.7.1 xeCJK patch file for listings
+\l__xeCJK_listings_max_char_int=\count342
+\l__xeCJK_listings_flag_int=\count343
+) (./ucas_zh.aux)
+\openout1 = `ucas_zh.aux'.
 
-! LaTeX Error: Command \openbox already defined.
-               Or name \end... illegal, see p.192 of the manual.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 114.
+LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 11
+4.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/omlntxmi.fd
+File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
+)
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 114.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 114
+.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/untxexa.fd
+File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
+)
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 114.
+LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 11
+4.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/lmsntxsy.fd
+File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
+)
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 114.
+LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 1
+14.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/lmxntxexx.fd
+File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
+)
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 114.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.427   \vrule\hfil}}
-                      
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.s
+ty
+Package: ltcaption 2018/08/26 v1.4-95 longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count344
+\AtBeginShipoutBox=\box70
+Package hyperref Info: Link coloring ON on input line 114.
+
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.st
+y
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/oberdiek/gettitle
+string.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count345
+)
+LaTeX Info: Redefining \ref on input line 114.
+LaTeX Info: Redefining \pageref on input line 114.
+LaTeX Info: Redefining \nameref on input line 114.
+(./ucas_zh.out) (./ucas_zh.out)
+\@outlinefile=\write4
+\openout4 = `ucas_zh.out'.
+
+File: Img/zuel_logo.pdf Graphic file (type pdf)
+<use Img/zuel_logo.pdf>
+
+Package fontspec Info: Could not resolve font "SimHei/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "SimHei/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "SimHei/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Font family 'SimHei(0)' created for font 'SimHei' with
+(fontspec)             options [Script={CJK},AutoFakeBold={4}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SimHei/OT:script=hani;language=DFLT;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->"SimHei/OT:script=hani;language=DFLT;embolden=4;"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 159.
+
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 159
+.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/untxmia.fd
+File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
+)
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 159
+.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/untxsym.fd
+File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
+)
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 159
+.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/untxsyc.fd
+File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 159.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 159.
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(c:/Users/ASUS/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/oberdiek/se-ascii
+-print.def
+File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
+
+) [1
+
+
+
+]
+Overfull \vbox (8.91176pt too high) has occurred while \output is active []
+
+[2] [3
+
+
+] [4
+
+
+] [1
+
+
+]
+
+Package fontspec Info: Could not resolve font "SimHei/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "SimHei/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "SimHei/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Font family 'SimHei(1)' created for font 'SimHei' with
+(fontspec)             options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SimHei/OT:script=hani;language=DFLT;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+[2
+
+
+]
+
+LaTeX Font Warning: Font shape `TU/SimHei(1)/bx/n' undefined
+(Font)              using `TU/SimHei(1)/m/n' instead on input line 186.
+
+(./ucas_zh.toc
+Overfull \hbox (6.0225pt too wide) detected at line 4
+ []\TU/entextsf/m/n/12.045 3
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 5
+ []\TU/entextsf/m/n/12.045 3
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 7
+ []\TU/entextsf/m/n/12.045 4
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 8
+ []\TU/entextsf/m/n/12.045 4
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 9
+ []\TU/entextsf/m/n/12.045 4
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 10
+ []\TU/entextsf/m/n/12.045 5
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 11
+ []\TU/entextsf/m/n/12.045 5
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 12
+ []\TU/entextsf/m/n/12.045 5
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 13
+ []\TU/entextsf/m/n/12.045 7
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 14
+ []\TU/entextsf/m/n/12.045 8
+ []
+
+
+Overfull \hbox (6.0225pt too wide) detected at line 15
+ []\TU/entextsf/m/n/12.045 8
+ []
+
+
+Overfull \hbox (11.59802pt too wide) detected at line 19
+ []\TU/entextsf/m/n/12.045 11
+ []
+
+
+Overfull \hbox (11.59802pt too wide) detected at line 20
+ []\TU/entextsf/m/n/12.045 11
+ []
+
+
+Overfull \hbox (11.59802pt too wide) detected at line 21
+ []\TU/entextsf/m/n/12.045 11
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 22
+ []\TU/entextsf/m/n/12.045 12
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 23
+ []\TU/entextsf/m/n/12.045 12
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 26
+ []\TU/entextsf/m/n/12.045 13
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 27
+ []\TU/entextsf/m/n/12.045 14
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 28
+ []\TU/entextsf/m/n/12.045 14
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 29
+ []\TU/entextsf/m/n/12.045 15
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 30
+ []\TU/entextsf/m/n/12.045 17
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 31
+ []\TU/entextsf/m/n/12.045 17
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 32
+ []\TU/entextsf/m/n/12.045 18
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 33
+ []\TU/entextsf/m/n/12.045 18
+ []
+
+[3
+
+]
+Overfull \hbox (12.045pt too wide) detected at line 34
+ []\TU/entextsf/m/n/12.045 18
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 35
+ []\TU/entextsf/m/n/12.045 19
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 36
+ []\TU/entextsf/m/n/12.045 20
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 37
+ []\TU/entextsf/m/n/12.045 21
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 38
+ []\TU/entextsf/m/n/12.045 21
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 39
+ []\TU/entextsf/m/n/12.045 22
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 40
+ []\TU/entextsf/m/n/12.045 22
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 41
+ []\TU/entextsf/m/n/12.045 23
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 42
+ []\TU/entextsf/m/n/12.045 23
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 43
+ []\TU/entextsf/m/n/12.045 23
+ []
+
+
+Overfull \hbox (12.045pt too wide) detected at line 44
+ []\TU/entextsf/m/n/12.045 24
+ []
+
+)
+\tf@toc=\write5
+\openout5 = `ucas_zh.toc'.
+
+[4] (./ucas_zh.lof)
+\tf@lof=\write6
+\openout6 = `ucas_zh.lof'.
+
+[5
+
+] (./ucas_zh.lot)
+\tf@lot=\write7
+\openout7 = `ucas_zh.lot'.
+
+(./Tex/Prematter.tex [6
+
+] [7
+
+]) [1]
+一、
+
+Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "FangSong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "FangSong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
+(fontspec)             with options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"FangSong/OT:script=hani;language=DFLT;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Overfull \hbox (16.04832pt too wide) in paragraph at lines 210--211
+\TU/SimSun(1)/m/n/12.045 见 格 式。|  除 了 论 文 与 书 籍 的 写 作 之 外，|  你 也 可 以 在 \TU/lmtt
+/m/n/12.045 bookdown-demo \TU/SimSun(1)/m/n/12.045 或 \TU/lmtt/m/n/12.045 bookdo
+wnplus
+ []
+
+[1
+
+
+
+]
+二、
+[2
+
+]
+三、
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 234.
+
+
+Overfull \hbox (3.16995pt too wide) in paragraph at lines 236--237
+[]\TU/SimSun(1)/m/n/12.045 在 配 置 好 上 面 的 环 境 之 后，|  你 可 以 在 \TU/entextsf/m/n/12
+.045 [[][]$[][][][][] [] [] [] [][][][][][] [] [][][] [] [][][][][][][][] [] []
+[][][] []
+ []
+
+[3
+
+]
+四、
+
+Overfull \hbox (161.0621pt too wide) in paragraph at lines 241--242
+\TU/SimSun(1)/m/n/12.045 片、|  表 格、|  引 用、|  数 学 定 理 与 方 程。|  本 章 的 大 部 分 内 容 翻 
+译 自 \TU/entextsf/m/n/12.045 https://bookdown.org/yihui/bookdown/components.html
+\TU/SimSun(1)/m/n/12.045 。|
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 244.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 247.
+
+
+Overfull \hbox (4.91356pt too wide) in paragraph at lines 249--250
+\TU/FangSong(0)/m/n/12.045 体 \TU/lmtt/m/n/12.045 __ \TU/SimSun(1)/m/n/12.045 来 
+使 用 \TU/SimSun(1)/bx/n/12.045 粗 体\TU/SimSun(1)/m/n/12.045 。|  两 个 \TU/lmtt/m/n/
+12.045 ~ \TU/SimSun(1)/m/n/12.045 中 间 的 文 字 会 变 为 下 标 如 \TU/lmtt/m/n/12.045 X~1
+~,X~2~,$\cdots$,X~n~\TU/SimSun(1)/m/n/12.045 ，|
+ []
+
+
+Overfull \hbox (3.48645pt too wide) in paragraph at lines 249--250
+\TU/SimSun(1)/m/n/12.045 将 使 用 \TU/lmtt/m/n/12.045 [text](link) \TU/SimSun(1)/m
+/n/12.045 创 建，|  如 \TU/lmtt/m/n/12.045 [RStudio](https://www.rstudio.com)[][]\T
+U/entextsf/m/n/12.045 RStudio[][]\TU/SimSun(1)/m/n/12.045 。|
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 252.
+
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 254.
+
+
+Overfull \hbox (7.50356pt too wide) in paragraph at lines 254--254
+[]\TU/SimSun(1)/m/n/12.045 你 可 以 在 一 对 \TU/lmtt/m/n/12.045 $ \TU/SimSun(1)/m/n/
+12.045 中 间 插 入 行 内 \TU/entextsf/m/n/12.045 LaTex \TU/SimSun(1)/m/n/12.045 数 学 表
+ 达 式，|  例 如 \TU/lmtt/m/n/12.045 $f(k) = {n \choose
+ []
+
+[4
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 277.
+
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12.045> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 283.
+
+LaTeX Warning: Reference `eq:binom' on page 5 undefined on input line 292.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 295.
+
+
+LaTeX Warning: Reference `thm:pyth' on page 5 undefined on input line 301.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 306.
+
+[5]
+File: ucas_zh_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type pdf)
+<use ucas_zh_files/figure-latex/unnamed-chunk-1-1.pdf>
+
+Overfull \hbox (76.72644pt too wide) in paragraph at lines 317--318
+[][] 
+ []
+
+File: ucas_zh_files/figure-latex/pressure-1.pdf Graphic file (type pdf)
+<use ucas_zh_files/figure-latex/pressure-1.pdf>
+
+Overfull \hbox (40.59152pt too wide) in paragraph at lines 330--332
+[][]
+ []
+
+[6]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 334.
+
+
+Overfull \hbox (11.72736pt too wide) in paragraph at lines 342--344
+\TU/SimSun(1)/m/n/12.045 你 的 文 档 输 出 格 式 来 自 适 应 的 选 择 输 出 函 数\TU/lmtt/m/n/12.0
+45 ![]() |\TU/SimSun(1)/m/n/12.045 （\TU/entextsf/m/n/12.045 markdown\TU/SimSun(
+1)/m/n/12.045 ） 、| \TU/lmtt/m/n/12.045 \includegraphics
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 350.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 353.
+
+[7] [8]
+五、
+[9
+
+]
+六、
+[10
+
+]
+附录 A
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 415.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 420.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 427.
+
+[11
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 436.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 449.
+
+[12]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 472.
+
+[13]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 479.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 490.
+
+Missing character: There is no ① in font Times New Roman/OT:script=latn;languag
+e=DFLT;mapping=tex-text;!
+Missing character: There is no ① in font Times New Roman/OT:script=latn;languag
+e=DFLT;mapping=tex-text;!
+[14]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 501.
+
+[15] [16]
+Missing character: There is no ， in font [lmmono12-regular]:!
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 580.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 587.
+
+[17]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 594.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 597.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 608.
+
+[18]
+Overfull \hbox (2.67517pt too wide) in paragraph at lines 620--621
+[]\TU/SimSun(1)/bx/n/12.045 其 他 格 式。|  \TU/SimSun(1)/m/n/12.045 当 项 次 下 无 目 次 时
+，|  也 可 在 正 文 的 同 一 段 落 中 用 \TU/entextsf/m/n/12.045 “ |\TU/SimSun(1)/m/n/12.045
+ （\TU/entextsf/m/n/12.045 1\TU/SimSun(1)/m/n/12.045 ）| \TU/entextsf/m/n/12.045 
+…………\TU/SimSun(1)/m/n/12.045 ； （\TU/entextsf/m/n/12.045 2\TU/SimSun(1)/m/n/12.0
+45 ）|
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 623.
+
+[19]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 638.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 649.
+
+[20]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 660.
+
+[21]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 673.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 678.
+
+[22]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 695.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 706.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 713.
+
+[23]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 12.045pt
+(hyperref)                removed on input line 720.
+
+[24]
+No file ucas_zh.bbl.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 734.
+[25
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 734.
+(./ucas_zh.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 734.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 734.
+Package rerunfilecheck Info: File `ucas_zh.out' has not changed.
+(rerunfilecheck)             Checksum: F42476E615AE83657359203BD0F270CB.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 30939 strings out of 494921
- 593532 string characters out of 6176182
- 676021 words of memory out of 5000000
- 34537 multiletter control sequences out of 15000+600000
- 532980 words of font info for 48 fonts, out of 8000000 for 9000
+ 32075 strings out of 494921
+ 639306 string characters out of 6176182
+ 696700 words of memory out of 5000000
+ 35521 multiletter control sequences out of 15000+600000
+ 583344 words of font info for 172 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,0n,94p,923b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,94p,904b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-No pages of output.
+Output written on ucas_zh.pdf (37 pages).

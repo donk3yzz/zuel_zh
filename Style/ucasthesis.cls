@@ -61,7 +61,7 @@
 %->> Required packages
 %---------------------------------------------------------------------------%
 \RequirePackage{ifxetex}% LaTeX engine detection
-\RequirePackage{etoolbox}% a toolbox of programming facilities
+%\RequirePackage{etoolbox}% a toolbox of programming facilities
 \newcommand{\ucasifstreq}{\expandafter\ifstrequal\expandafter}% expansion control
 \newcommand{\ucasifstrbk}{\expandafter\ifblank\expandafter}% expansion control
 %---------------------------------------------------------------------------%

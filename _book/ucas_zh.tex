@@ -55,9 +55,12 @@
 \newcommand{\unemph}[1]{\textup{\textcolor{black}{#1}}}
 \newcommand{\docversion}{v1.7.4}
 
+\newcommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{longtable,booktabs}
 
 \usepackage{amssymb,amsmath}
+
 %\usepackage{natbib}
 %\bibliographystyle{apalike}
 \newcommand{\VerbBar}{|}
@@ -108,22 +111,6 @@
 %---------------------------------------------------------------------------%
 %->> Document content
 %---------------------------------------------------------------------------%
-\usepackage{amsthm}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{lemma}{Lemma}[chapter]
-\newtheorem{corollary}{Corollary}[chapter]
-\newtheorem{proposition}{Proposition}[chapter]
-\newtheorem{conjecture}{Conjecture}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[chapter]
-\theoremstyle{definition}
-\newtheorem{example}{Example}[chapter]
-\theoremstyle{definition}
-\newtheorem{exercise}{Exercise}[chapter]
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-\newtheorem*{solution}{Solution}
-\let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
 %-
 %-> Frontmatter: title page, abstract, content list, symbol list, preface
@@ -259,21 +246,30 @@
 \hypertarget{section-1}{%
 \subsection{行内样式}\label{section-1}}
 
-你可以通过\texttt{\_斜体\_}或\texttt{*斜体*}来使用\emph{斜体}；用\texttt{**粗体**}或\texttt{\_\_粗体\_\_}来使用\textbf{粗体}。两个\texttt{\textasciitilde{}}中间的文字会变为下标如\texttt{X\textasciitilde{}1\textasciitilde{},X\textasciitilde{}2\textasciitilde{},\textbackslash{}cdots,X\textasciitilde{}n\textasciitilde{}}，会生成X\textsubscript{1},X\textsubscript{2},\cdots,X\textsubscript{n}；同样俩个\texttt{\^{}}间的文字会变为上标如\texttt{X\^{}2\^{}}会生成X\textsuperscript{2}。超链接将使用\texttt{{[}text{]}(link)}创建，如\texttt{{[}RStudio{]}(https://www.rstudio.com)}\href{https://www.rstudio.com}{RStudio}。可以使用\texttt{\^{}{[}{]}}添加脚注，如\texttt{\^{}{[}这是一个脚注{]}}\footnote{这是一个脚注}
+你可以通过\texttt{\_斜体\_}或\texttt{*斜体*}来使用\emph{斜体}；用\texttt{**粗体**}或\texttt{\_\_粗体\_\_}来使用\textbf{粗体}。两个\texttt{\textasciitilde{}}中间的文字会变为下标如\texttt{X\textasciitilde{}1\textasciitilde{},X\textasciitilde{}2\textasciitilde{},\$\textbackslash{}cdots\$,X\textasciitilde{}n\textasciitilde{}}，会生成X\textsubscript{1},X\textsubscript{2},\(\cdots\),X\textsubscript{n}；同样俩个\texttt{\^{}}间的文字会变为上标如\texttt{X\^{}2\^{}}会生成X\textsuperscript{2}。超链接将使用\texttt{{[}text{]}(link)}创建，如\texttt{{[}RStudio{]}(https://www.rstudio.com)}\href{https://www.rstudio.com}{RStudio}。可以使用\texttt{\^{}{[}{]}}添加脚注，如\texttt{\^{}{[}这是一个脚注{]}}\footnote{这是一个脚注}
 
 \hypertarget{section-2}{%
 \subsection{数学表达式}\label{section-2}}
 
 你可以在一对\texttt{\$}中间插入行内LaTex数学表达式，例如\texttt{\$f(k)\ =\ \{n\ \textbackslash{}choose\ k\}\ p\^{}\{k\}\ (1-p)\^{}\{n-k\}\$}会输出\(f(k) = {n \choose k} p^{k} (1-p)^{n-k}\)，或者在一对\texttt{\$\$}中插入行间数学表达式，例如\texttt{\$\$f(k)\ =\ \{n\ \textbackslash{}choose\ k\}\ p\^{}\{k\}\ (1-p)\^{}\{n-k\}\$\$} 会输出 \[f(k) = {n \choose k} p^{k} (1-p)^{n-k}\]。
 
-同样，你还可以在\texttt{\$\ \$}或\texttt{\$\$\ \$\$}中间使用其他数学环境，比如
+同样，你还可以在一对\texttt{\$}或\texttt{\$\$}中间使用其他数学环境，比如
 
 \begin{verbatim}
-$$\begin{array}{ccc}
+$$
+\begin{array}{ccc}
 x_{11} & x_{12} & x_{13}\\
 x_{21} & x_{22} & x_{23}
-\end{array}$$
+\end{array}
+$$
 \end{verbatim}
+
+\[
+\begin{array}{ccc}
+x_{11} & x_{12} & x_{13}\\
+x_{21} & x_{22} & x_{23}
+\end{array}
+\]
 
 你可以引用更多的数学环境如矩阵、行列式等等，详情可以参考latex中文简介
 
@@ -300,23 +296,7 @@ x_{21} & x_{22} & x_{23}
 
 bookdown中支持另一种定理环境，是基于code chunk来完成的，例如
 
-\begin{verbatim}
-\BeginKnitrBlock{theorem}<div class="theorem"><span class="theorem" id="thm:unnamed-chunk-1"><strong>\label{thm:unnamed-chunk-1} </strong></span>这是一条定理</div>\EndKnitrBlock{theorem}
-\end{verbatim}
-
 输出结果为：
-
-\BeginKnitrBlock{theorem}
-\protect\hypertarget{thm:unnamed-chunk-2}{}{\label{thm:unnamed-chunk-2} }这是一条定理
-\EndKnitrBlock{theorem}
-
-在theorem环境中你还可以设置另外两个参数\texttt{name=\textquotesingle{}\textquotesingle{}}和\texttt{label=\textquotesingle{}\textquotesingle{}}，他们分别定义了theorem环境的定理名称和引用标签，例如：
-
-\begin{verbatim}
-\BeginKnitrBlock{theorem}[勾股定理]<div class="theorem"><span class="theorem" id="thm:pyth"><strong>\label{thm:pyth}  \iffalse (勾股定理) \fi{} </strong></span>
-对于一个直角三角形，如果 $c$三角形的斜边而 $a$和 $b$分别为三角形的直角边，则有：
-$$a^2 + b^2 = c^2$$</div>\EndKnitrBlock{theorem}
-\end{verbatim}
 
 在引用时你可以使用\texttt{\textbackslash{}@ref(prefix:label)}，prefix是定理环境的简写，对于theorem为thm，那么我们要引用此定理，就可以用\texttt{\textbackslash{}@ref(thm:pyth)}，即，见定理\ref{thm:pyth}
 
@@ -334,7 +314,7 @@ $$a^2 + b^2 = c^2$$</div>\EndKnitrBlock{theorem}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ucas_zh_files/figure-latex/unnamed-chunk-3-1.pdf}
+\includegraphics{ucas_zh_files/figure-latex/unnamed-chunk-1-1.pdf}
 
 当然，在使用LaTex制作论文并插入图片时，你几乎不可避免的会遇到图片浮动的问题，即图片可能会出现在文章的其他位置。如果你不常使用LaTex并且不希望这种情况发生，你应该注意图片的浮动问题，通过修改图片的尺寸来解决这个问题。
 
@@ -399,6 +379,18 @@ $$a^2 + b^2 = c^2$$</div>\EndKnitrBlock{theorem}
 ## 2 Petal.Length   -0.257    0.0669     -3.84 1.80e- 4
 ## 3 Petal.Width     0.364    0.155       2.35 2.01e- 2
 \end{verbatim}
+
+\begin{tabular}{l|r|r|r|r}
+\hline
+term & estimate & std.error & statistic & p.value\\
+\hline
+(Intercept) & 3.5870492 & 0.0937257 & 38.271764 & 0.0000000\\
+\hline
+Petal.Length & -0.2571378 & 0.0669115 & -3.842952 & 0.0001804\\
+\hline
+Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
+\hline
+\end{tabular}
 
 \hypertarget{section-7}{%
 \chapter{作者简历及攻读学位期间发表的学术论文与研究成果}\label{section-7}}
