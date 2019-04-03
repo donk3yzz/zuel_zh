@@ -96,30 +96,109 @@ plot(pressure, pch = 19, type = "b")
 
 ## 表格
 
+在bookdown中，你可以使用markdown语法的表格，或者LaTex语法的表格，或者使用R中的一些制表的辅助包、辅助函数如`knitr::kable()`、`huxtable`或`xtable`等。使用`kable`，你可以轻松的将R中的数据框输出为html或LaTex制式的表格，例如：
+
+```{r kb-table, echo = TRUE}
+knitr::kable(
+  head(mtcars[, 1:8], 10), booktabs = TRUE,
+  caption = 'kable()输出的一个表'
+)
+```
+
+当然，如果熟悉markdown，你也可以使用makrdown语法的表格
+```
+Table: A simple table in Markdown.
+
+ Sepal.Length   Sepal.Width   Petal.Length   Petal.Width
+-------------  ------------  -------------  ------------
+          5.1           3.5            1.4           0.2
+          4.9           3.0            1.4           0.2
+          4.7           3.2            1.3           0.2
+          4.6           3.1            1.5           0.2
+          5.0           3.6            1.4           0.2
+          5.4           3.9            1.7           0.4
+```
+
+基于bookdown的便利性，你也可以像引用图片一样方便的引用这些表格。
+
 ### 回归结果
 
-```{r}
-#install.packages('broom')
-library(broom)
-fit <- lm(Sepal.Width ~ Petal.Length + Petal.Width, iris)
-tidy(fit)
-```
+对于回归分析的结果，你可以调用[`huxtable`]()包来轻松的进行学术化的制表，甚至可以对多个回归方程轻松的联合制表。
 
-```{r kable-broom,echo = FALSE}
-knitr::kable(tidy(fit),caption = '回归系数表')
-```
-
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 library(huxtable)
+data(diamonds, package = 'ggplot2')
+lm1 <- lm(price ~ carat + depth, diamonds)
+lm2 <- lm(price ~ depth + factor(color, ordered = FALSE), diamonds)
+lm3 <- lm(log(price) ~ carat + depth, diamonds)
 ```
-```{r hux-broom}
-fit %>% tidy %>% huxtable() %>% theme_article()
-```
-
 
 ```{r,fig.pos='H'}
-fit %>% huxreg() %>% theme_article() %>% 
-  set_caption('huxreg的回归输出方案')
+color_names <- paste0('factor(color, ordered = FALSE)', LETTERS[5:10])
+names(color_names) <- paste('Color:', LETTERS[5:10])
+
+huxreg(lm1, lm2, lm3, 
+  coefs = c('Carat' = 'carat', 'Depth' = 'depth', color_names)) %>% 
+  theme_article()
+
 ```
 
+更多的关于`huxreg()`的用法可以见[这里](https://hughjonesd.github.io/huxtable/huxreg.html)。
+
+## 交叉引用与引文
+
+与前面的引用图标、公式、定理的方法相同，你也可以用`\@ref(label)`来引用章节标题，如果是英文标题，pandoc将自动为之分配一个标签，如章Reference 将拥有一个标签reference。如果是中文标题，可以考虑使用Peng Zhao开发的包[`pinyin`](https://github.com/pzhaonet/pinyin)，它可以自动给中文章节分配一个与其拼音拼写对应的标签。
+
+不过这可能会导致某个章节的标签过长，所以我们还是建议你自己为每个章节定制标签，在每个章节后添加{#ID}，ID即为本章的标签。
+
+### bibtex与文献引用
+
+为了方便的引用和排列参考文献，你应该使用bibtex来对参考文献进行管理。pandoc可以利用[`pandoc-citeproc`](https://github.com/jgm/pandoc-citeproc)单元来处理文献引用的问题，当输出格式为LaTex时，利用BibTex可以更好的处理参考文献。
+
+一个BibTex database文件时一个纯文本文件（文件拓展名为`.bib`），其中一个书目条目(bibliography entry)的主要内容应该如：
+
+```
+
+@Manual{R-base,
+  title = {R: A Language and Environment for Statistical
+    Computing},
+  author = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2016},
+  url = {https://www.R-project.org/},
+}
+```
+每一个书目条目以`@type{`起始，其中type包括`article`、`book`、`Manual`等类型，然后每个书目条目中有一个引用关键字，如上面的`R-base`，你可以使用`@R-base`
+或`[@R-base]`来引用它，后者将会在括号中引用文献，如[@R-base]。
+
+同时在`knitr`中还有一个辅助函数`knitr::write_bib()`可以帮助你引用在写论文时使用到的包。例如：
+```{r write_bib, echo = TRUE}
+knitr::write_bib(c("knitr", "stringr"), "Rpackage.bib", width = 60)
+```
+会生成一个名为`Rpackage`内容如下的`.bib`文件
+```bib
+@Manual{R-knitr,
+  title = {knitr: A General-Purpose Package for Dynamic Report
+    Generation in R},
+  author = {Yihui Xie},
+  year = {2018},
+  note = {R package version 1.20.22},
+  url = {https://yihui.name/knitr/},
+}
+@Manual{R-stringr,
+  title = {stringr: Simple, Consistent Wrappers for Common
+    String Operations},
+  author = {Hadley Wickham},
+  year = {2018},
+  note = {R package version 1.3.1},
+  url = {https://CRAN.R-project.org/package=stringr},
+}
+```
+如果你有一个或多个bib文件，你需要在index.Rmd的YAML metadata（即文档开头一对`---`中间的内容）中的`bibliography`中引用它们，如：
+```
+---
+bibliography: [bib/bib.bib, bib/Rpackage.bib]
+---
+```

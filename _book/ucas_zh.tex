@@ -372,102 +372,81 @@ bookdown中支持另一种定理环境，是基于code chunk来完成的，例�
 \hypertarget{section-5}{%
 \section{表格}\label{section-5}}
 
-\hypertarget{section-6}{%
-\subsection{回归结果}\label{section-6}}
+在bookdown中，你可以使用markdown语法的表格，或者LaTex语法的表格，或者使用R中的一些制表的辅助包、辅助函数如\texttt{knitr::kable()}、\texttt{huxtable}或\texttt{xtable}等。使用\texttt{kable}，你可以轻松的将R中的数据框输出为html或LaTex制式的表格，例如：
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#install.packages('broom')}
-\KeywordTok{library}\NormalTok{(broom)}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}
+  \KeywordTok{head}\NormalTok{(mtcars[, }\DecValTok{1}\OperatorTok{:}\DecValTok{8}\NormalTok{], }\DecValTok{10}\NormalTok{), }\DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{,}
+  \DataTypeTok{caption =} \StringTok{'kable()输出的一个表'}
+\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'broom' was built under R version
-## 3.5.3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fit <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Sepal.Width }\OperatorTok{~}\StringTok{ }\NormalTok{Petal.Length }\OperatorTok{+}\StringTok{ }\NormalTok{Petal.Width, iris)}
-\KeywordTok{tidy}\NormalTok{(fit)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 3 x 5
-##   term         estimate std.error statistic  p.value
-##   <chr>           <dbl>     <dbl>     <dbl>    <dbl>
-## 1 (Intercept)     3.59     0.0937     38.3  2.51e-78
-## 2 Petal.Length   -0.257    0.0669     -3.84 1.80e- 4
-## 3 Petal.Width     0.364    0.155       2.35 2.01e- 2
-\end{verbatim}
 
 \begin{table}[t]
 
-\caption{\label{tab:kable-broom}回归系数表}
+\caption{\label{tab:kb-table}kable()输出的一个表}
 \centering
-\begin{tabular}{l|r|r|r|r}
-\hline
-term & estimate & std.error & statistic & p.value\\
-\hline
-(Intercept) & 3.5870492 & 0.0937257 & 38.271764 & 0.0000000\\
-\hline
-Petal.Length & -0.2571378 & 0.0669115 & -3.842952 & 0.0001804\\
-\hline
-Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
-\hline
+\begin{tabular}{lrrrrrrrr}
+\toprule
+  & mpg & cyl & disp & hp & drat & wt & qsec & vs\\
+\midrule
+Mazda RX4 & 21.0 & 6 & 160.0 & 110 & 3.90 & 2.620 & 16.46 & 0\\
+Mazda RX4 Wag & 21.0 & 6 & 160.0 & 110 & 3.90 & 2.875 & 17.02 & 0\\
+Datsun 710 & 22.8 & 4 & 108.0 & 93 & 3.85 & 2.320 & 18.61 & 1\\
+Hornet 4 Drive & 21.4 & 6 & 258.0 & 110 & 3.08 & 3.215 & 19.44 & 1\\
+Hornet Sportabout & 18.7 & 8 & 360.0 & 175 & 3.15 & 3.440 & 17.02 & 0\\
+\addlinespace
+Valiant & 18.1 & 6 & 225.0 & 105 & 2.76 & 3.460 & 20.22 & 1\\
+Duster 360 & 14.3 & 8 & 360.0 & 245 & 3.21 & 3.570 & 15.84 & 0\\
+Merc 240D & 24.4 & 4 & 146.7 & 62 & 3.69 & 3.190 & 20.00 & 1\\
+Merc 230 & 22.8 & 4 & 140.8 & 95 & 3.92 & 3.150 & 22.90 & 1\\
+Merc 280 & 19.2 & 6 & 167.6 & 123 & 3.92 & 3.440 & 18.30 & 1\\
+\bottomrule
 \end{tabular}
 \end{table}
+
+当然，如果熟悉markdown，你也可以使用makrdown语法的表格
+
+\begin{verbatim}
+Table: A simple table in Markdown.
+
+ Sepal.Length   Sepal.Width   Petal.Length   Petal.Width
+-------------  ------------  -------------  ------------
+          5.1           3.5            1.4           0.2
+          4.9           3.0            1.4           0.2
+          4.7           3.2            1.3           0.2
+          4.6           3.1            1.5           0.2
+          5.0           3.6            1.4           0.2
+          5.4           3.9            1.7           0.4
+\end{verbatim}
+
+基于bookdown的便利性，你也可以像引用图片一样方便的引用这些表格。
+
+\hypertarget{section-6}{%
+\subsection{回归结果}\label{section-6}}
+
+对于回归分析的结果，你可以调用\href{}{\texttt{huxtable}}包来轻松的进行学术化的制表，甚至可以对多个回归方程轻松的联合制表。
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(dplyr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-## Attaching package: 'dplyr'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(huxtable)}
+\KeywordTok{data}\NormalTok{(diamonds, }\DataTypeTok{package =} \StringTok{'ggplot2'}\NormalTok{)}
+\NormalTok{lm1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(price }\OperatorTok{~}\StringTok{ }\NormalTok{carat }\OperatorTok{+}\StringTok{ }\NormalTok{depth, diamonds)}
+\NormalTok{lm2 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(price }\OperatorTok{~}\StringTok{ }\NormalTok{depth }\OperatorTok{+}\StringTok{ }\KeywordTok{factor}\NormalTok{(color, }\DataTypeTok{ordered =} \OtherTok{FALSE}\NormalTok{), diamonds)}
+\NormalTok{lm3 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(price) }\OperatorTok{~}\StringTok{ }\NormalTok{carat }\OperatorTok{+}\StringTok{ }\NormalTok{depth, diamonds)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Warning: package 'huxtable' was built under R version
-## 3.5.3
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'huxtable'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:dplyr':
-## 
-##     add_rownames
-\end{verbatim}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fit }\OperatorTok{%>%}\StringTok{ }\NormalTok{tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{huxtable}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{theme_article}\NormalTok{()}
+\NormalTok{color_names <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{'factor(color, ordered = FALSE)'}\NormalTok{, LETTERS[}\DecValTok{5}\OperatorTok{:}\DecValTok{10}\NormalTok{])}
+\KeywordTok{names}\NormalTok{(color_names) <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{'Color:'}\NormalTok{, LETTERS[}\DecValTok{5}\OperatorTok{:}\DecValTok{10}\NormalTok{])}
+
+\KeywordTok{huxreg}\NormalTok{(lm1, lm2, lm3, }
+  \DataTypeTok{coefs =} \KeywordTok{c}\NormalTok{(}\StringTok{'Carat'}\NormalTok{ =}\StringTok{ 'carat'}\NormalTok{, }\StringTok{'Depth'}\NormalTok{ =}\StringTok{ 'depth'}\NormalTok{, color_names)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_article}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -480,152 +459,205 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 \begin{table}[h]
 \centering
 \begin{threeparttable}
-\begin{tabularx}{0.5\textwidth}{p{0.1\textwidth} p{0.1\textwidth} p{0.1\textwidth} p{0.1\textwidth} p{0.1\textwidth}}
+\begin{tabularx}{0.5\textwidth}{p{0.125\textwidth} p{0.125\textwidth} p{0.125\textwidth} p{0.125\textwidth}}
 
 
-\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{(Intercept)}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{ 3.59~}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{0.0937}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{38.3~}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft \textbf{2.51e-78}\huxbpad{4pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Length}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -0.257\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.0669\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -3.84\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.00018~\huxbpad{4pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Width}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft  0.364\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.155~\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft  2.35\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.0201~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
-\arrayrulecolor{black}
-\end{tabularx}\end{threeparttable}
-
-
-\end{table}
- 
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fit }\OperatorTok{%>%}\StringTok{ }\KeywordTok{huxreg}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{theme_article}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{set_caption}\NormalTok{(}\StringTok{'huxreg的回归输出方案'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
- 
-  \providecommand{\huxb}[2]{\arrayrulecolor[RGB]{#1}\global\arrayrulewidth=#2pt}
-  \providecommand{\huxvb}[2]{\color[RGB]{#1}\vrule width #2pt}
-  \providecommand{\huxtpad}[1]{\rule{0pt}{\baselineskip+#1}}
-  \providecommand{\huxbpad}[1]{\rule[-#1]{0pt}{#1}}
-
-\begin{table}[h]
-\centering
-\begin{threeparttable}
-\captionsetup{justification=centering,singlelinecheck=off}
-\caption{huxreg的回归输出方案}
-\begin{tabularx}{0.5\textwidth}{p{0.25\textwidth} p{0.25\textwidth}}
-
-
-\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
 \arrayrulecolor{black}
 
 \multicolumn{1}{!{\huxvb{0, 0, 0}{0}}c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\centering \textbf{}\huxbpad{4pt}} &
-\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\centering \textbf{(1)}\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\centering \textbf{(1)}\huxbpad{4pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\centering \textbf{(2)}\huxbpad{4pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\centering \textbf{(3)}\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
-\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
 \arrayrulecolor{black}
 
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{(Intercept)}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 3.587 ***\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Carat}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 7765.141 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 1.971 ***\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
 \multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.094)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (14.009)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.004)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Length}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -0.257 ***\huxbpad{4pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.067)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Petal.Width}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.364 *~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Depth}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -102.165 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -53.835 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -0.018 ***\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
 \multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.155)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (4.635)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (11.815)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (0.001)~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Color: E}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -95.142~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (62.037)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Color: F}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 554.742 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (62.374)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Color: G}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 832.357 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (60.338)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Color: H}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 1324.183 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (64.296)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Color: I}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 1929.902 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (71.561)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{Color: J}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 2164.044 ***\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{}\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft (88.144)~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft ~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
 \multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{N}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 150~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 53940~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 53940~~~~~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 53940~~~~~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
 \multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{R2}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.213~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.851~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.032~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 0.847~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
 \multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{logLik}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -69.802~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -472488.441~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -522908.139~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft -26617.649~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
 \multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedright \textbf{AIC}\huxbpad{4pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 147.604~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 944984.882~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 1045834.277~~~~\huxbpad{4pt}} &
+\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{4pt}\raggedleft 53243.298~~~~\huxbpad{4pt}} \tabularnewline[-0.5pt]
 
 
 \hhline{}
 \arrayrulecolor{black}
 
-\multicolumn{2}{!{\huxvb{0, 0, 0}{0}}p{0.5\textwidth+2\tabcolsep}!{\huxvb{0, 0, 0}{0}}}{\parbox[b]{0.5\textwidth+2\tabcolsep-4pt-4pt}{\huxtpad{4pt}\raggedright \textbf{ *** p $<$ 0.001;  ** p $<$ 0.01;  * p $<$ 0.05.}\huxbpad{4pt}}} \tabularnewline[-0.5pt]
+\multicolumn{4}{!{\huxvb{0, 0, 0}{0}}p{0.5\textwidth+6\tabcolsep}!{\huxvb{0, 0, 0}{0}}}{\parbox[b]{0.5\textwidth+6\tabcolsep-4pt-4pt}{\huxtpad{4pt}\raggedright \textbf{ *** p $<$ 0.001;  ** p $<$ 0.01;  * p $<$ 0.05.}\huxbpad{4pt}}} \tabularnewline[-0.5pt]
 
 
-\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
 \arrayrulecolor{black}
 \end{tabularx}\end{threeparttable}
 
@@ -633,39 +665,110 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 \end{table}
  
 
+更多的关于\texttt{huxreg()}的用法可以见\href{https://hughjonesd.github.io/huxtable/huxreg.html}{这里}。
+
 \hypertarget{section-7}{%
-\chapter{作者简历及攻读学位期间发表的学术论文与研究成果}\label{section-7}}
+\section{交叉引用与引文}\label{section-7}}
+
+与前面的引用图标、公式、定理的方法相同，你也可以用\texttt{\textbackslash{}@ref(label)}来引用章节标题，如果是英文标题，pandoc将自动为之分配一个标签，如章Reference 将拥有一个标签reference。如果是中文标题，可以考虑使用Peng Zhao开发的包\href{https://github.com/pzhaonet/pinyin}{\texttt{pinyin}}，它可以自动给中文章节分配一个与其拼音拼写对应的标签。
+
+不过这可能会导致某个章节的标签过长，所以我们还是建议你自己为每个章节定制标签，在每个章节后添加\{\#ID\}，ID即为本章的标签。
+
+\hypertarget{bibtex}{%
+\subsection{bibtex与文献引用}\label{bibtex}}
+
+为了方便的引用和排列参考文献，你应该使用bibtex来对参考文献进行管理。pandoc可以利用\href{https://github.com/jgm/pandoc-citeproc}{\texttt{pandoc-citeproc}}单元来处理文献引用的问题，当输出格式为LaTex时，利用BibTex可以更好的处理参考文献。
+
+一个BibTex database文件时一个纯文本文件（文件拓展名为\texttt{.bib}），其中一个书目条目(bibliography entry)的主要内容应该如：
+
+\begin{verbatim}
+
+@Manual{R-base,
+  title = {R: A Language and Environment for Statistical
+    Computing},
+  author = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2016},
+  url = {https://www.R-project.org/},
+}
+\end{verbatim}
+
+每一个书目条目以\texttt{@type\{}起始，其中type包括\texttt{article}、\texttt{book}、\texttt{Manual}等类型，然后每个书目条目中有一个引用关键字，如上面的\texttt{R-base}，你可以使用\texttt{@R-base}
+或\texttt{{[}@R-base{]}}来引用它，后者将会在括号中引用文献，如(R Core Team \protect\hyperlink{ref-R-base}{2016})。
+
+同时在\texttt{knitr}中还有一个辅助函数\texttt{knitr::write\_bib()}可以帮助你引用在写论文时使用到的包。例如：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{write_bib}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"knitr"}\NormalTok{, }\StringTok{"stringr"}\NormalTok{), }\StringTok{"Rpackage.bib"}\NormalTok{, }\DataTypeTok{width =} \DecValTok{60}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+会生成一个名为\texttt{Rpackage}内容如下的\texttt{.bib}文件
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{@Manual}\NormalTok{\{}\OtherTok{R}\NormalTok{-}\OtherTok{knitr}\NormalTok{,}
+  \DataTypeTok{title}\NormalTok{ = \{knitr: A General-Purpose Package for Dynamic Report}
+\NormalTok{    Generation in R\},}
+  \DataTypeTok{author}\NormalTok{ = \{Yihui Xie\},}
+  \DataTypeTok{year}\NormalTok{ = \{2018\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 1.20.22\},}
+  \DataTypeTok{url}\NormalTok{ = \{https://yihui.name/knitr/\},}
+\NormalTok{\}}
+\VariableTok{@Manual}\NormalTok{\{}\OtherTok{R}\NormalTok{-}\OtherTok{stringr}\NormalTok{,}
+  \DataTypeTok{title}\NormalTok{ = \{stringr: Simple, Consistent Wrappers for Common}
+\NormalTok{    String Operations\},}
+  \DataTypeTok{author}\NormalTok{ = \{Hadley Wickham\},}
+  \DataTypeTok{year}\NormalTok{ = \{2018\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 1.3.1\},}
+  \DataTypeTok{url}\NormalTok{ = \{https://CRAN.R-project.org/package=stringr\},}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+如果你有一个或多个bib文件，你需要在index.Rmd的YAML metadata（即文档开头一对\texttt{-\/-\/-}中间的内容）中的\texttt{bibliography}中引用它们，如：
+
+\begin{verbatim}
+---
+bibliography: [bib/bib.bib, bib/Rpackage.bib]
+---
+\end{verbatim}
+
+\hypertarget{section-8}{%
+\chapter{作者简历及攻读学位期间发表的学术论文与研究成果}\label{section-8}}
 
 本科生无需此部分。
 
-\hypertarget{section-8}{%
-\chapter{致谢}\label{section-8}}
+\hypertarget{section-9}{%
+\chapter{致谢}\label{section-9}}
 
 本模板源自 mohuangrui/ucasthesis \LaTeX\{\} 模板\footnote{\url{https://gitlab.com/mohuangrui/ucasthesis}}。感谢！
 
 \appendix
 
-\hypertarget{section-9}{%
-\chapter{中南财经政法大学本科生毕业论文规范}\label{section-9}}
+\hypertarget{section-10}{%
+\chapter{中南财经政法大学本科生毕业论文规范}\label{section-10}}
 
 \raggedbottom
 
 为了进一步规范我校本科生毕业论文（设计）的撰写工作，提高论文撰写质量与规范化水平，现根据《中南财经政法大学本科生毕业论文（设计）管理办法》的要求，参照中国国家标准标准化管理委员会所发布的《科学技术报告、学位论文和学术论文的编写格式》（GB／T7713-1987）和《文后参考文献著录规则》（GB/T7714-2005）等标准，以及中华人民共和国新闻署和中国国家语言文字工作委员会等机构发布的相关规则，结合我校学科结构上的特点，特制定本规范。
 
-\hypertarget{section-10}{%
-\section{毕业论文（设计）内容及要求}\label{section-10}}
+\hypertarget{section-11}{%
+\section{毕业论文（设计）内容及要求}\label{section-11}}
 
 毕业论文（设计）应包括以下项目：（1）封面；（2）作者声明；（3）论文（设计）题目及署名；（4）中外（英）文摘要及关键词；（5）目录；（6）正文；（7）注释；（8）主要参考文献；（9）附录（非必选项）；（10）后记（非必选项）。以上各项目的基本内容与要求如下：
 
-\hypertarget{section-11}{%
-\subsection{封面}\label{section-11}}
+\hypertarget{section-12}{%
+\subsection{封面}\label{section-12}}
 
 \textbf{封面信息。} 封面信息包括学校名称与本科生毕业论文（设计）的全称、毕业论文标题（含毕业设计，以下简称论文）、学生个人信息、指导老师信息，以及论文完成（提交答辩）时间等。
 
 \textbf{封面格式。} 封面格式由学校统一设计、印制后发放。封面上的题目、姓名、学号、班级、年级、专业、院系、指导教师姓名及职称等内容，以及论文完成时间。封面最好是打印填列，所有项目填列的内容均须排列整齐、美观。
 
-\hypertarget{section-12}{%
-\subsection{作者声明}\label{section-12}}
+\hypertarget{section-13}{%
+\subsection{作者声明}\label{section-13}}
 
 \textbf{声明内容。} 作者声明是论文的著作权人对论文形成的知识产权与使用的知识产权，以及可能产生的相应法律责任所做的公开表述和承诺，其内容包括声明文本和作者个人信息（专业、学号、姓名、时间）等。作者声明的内容由学校统一拟定。
 
@@ -673,8 +776,8 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 
 \textbf{声明生效。} 须由论文作者在作者签名处用中文手写签字，声明方才有效。时间最好手写。
 
-\hypertarget{section-13}{%
-\subsection{论文（设计）题目及署名}\label{section-13}}
+\hypertarget{section-14}{%
+\subsection{论文（设计）题目及署名}\label{section-14}}
 
 \textbf{题名排列。} 毕业论文（设计）题目、署名与完成时间接``作者声明''页后单设一页。
 
@@ -686,11 +789,11 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 
 \textbf{时间格式。} 毕业论文（设计）完成时间以``XXXX年X月X日''格式列页底，三号宋体，加粗，段后空两行，与签名居中对齐。
 
-\hypertarget{section-14}{%
-\subsection{中外（英）文摘要及关键词}\label{section-14}}
-
 \hypertarget{section-15}{%
-\subsubsection{中文摘要及关键词}\label{section-15}}
+\subsection{中外（英）文摘要及关键词}\label{section-15}}
+
+\hypertarget{section-16}{%
+\subsubsection{中文摘要及关键词}\label{section-16}}
 
 \textbf{摘要内容。} 摘要是论文内容的简要陈述，应尽量反映论文的主要信息，主要包括研究意义、目的、方法、成果和重要结论。摘要具有相对的独立性和完整性，其间不应含图表和注释，具有独立性和完整性。若论文摘要中需分层次表述内容时，一般应采用文字表达的方式，而不宜使用数字表达的方式。中文摘要字数一般为500～800字。
 
@@ -700,8 +803,8 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 
 \textbf{关键词格式。} 中文``关键词''应当排在``摘要''正文下一自然段。``关键词''前空两格，小二号宋体，加粗，后接冒号``：''，各个关键词用小四号宋体，其间用分号``；''分隔，段前空一行。
 
-\hypertarget{section-16}{%
-\subsubsection{外（英）文摘要与关键词}\label{section-16}}
+\hypertarget{section-17}{%
+\subsubsection{外（英）文摘要与关键词}\label{section-17}}
 
 ``外（英）文摘要及关键词''的翻译信息应在``中文摘要及关键词''页后另起一页。
 
@@ -709,15 +812,15 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 
 \textbf{外文关键词格式。} 外文关键词排在外文摘要正文下一自然段。英文用``Key words''，小三号字体，加粗，左顶格对齐，后接英文状态下的冒号``:''，各个关键词用小四号字体，其间用英文状态下的分号``;''分隔。第一个关键词的第一个字母大写，段前空一行。
 
-\hypertarget{section-17}{%
-\subsection{目录}\label{section-17}}
+\hypertarget{section-18}{%
+\subsection{目录}\label{section-18}}
 
 \textbf{目录内容。} 目录内容应当层次清晰，并与正文题序层次、标题内容完全一致。主要包括引论（或导论、绪论）、正文主体（一般只到二级标题，即条次与款次）、结语（或结论）、主要参考文献、附录和后记等项。
 
 \textbf{目录格式。} 目录应单设一页。``目录''两字间空两格，小二号宋体，加粗，占一行，居中，段前段后各空一行，结尾处无标点符号。目录下各项内容应标明与论文正文中相应内容相互对应的页序，标题与页序之间的空格应当用中圆点填充。目录内容只列两级：条次级（即``一、''）用四号黑体，加粗，左顶格；款次级（即``（一）''）用小四号宋体，左边缩进两个空格。目录各项相应页序统一为右顶格对齐。
 
-\hypertarget{section-18}{%
-\subsection{正文}\label{section-18}}
+\hypertarget{section-19}{%
+\subsection{正文}\label{section-19}}
 
 论文正文部分包括引论（或导论、绪论）、论文主体及结语（或结论）三个主要部分，总字数不少于10 000字。三个主要部分的基本要求如下：
 
@@ -727,8 +830,8 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 
 \textbf{结语（可选）。} 结语部分是整个论文的总结，应以简练的文字说明论文所做的工作以及所得到的主要结论，也可涉及论文存在的研究局限和需要进一步研究的问题等。结语一般不宜过长。它可以作为一个单独条次排列，``结语''两字间空两格，但在标题前不加题序，规范要求同条次。如果结语内容不长，也可不加``结语''字样，而只是在正文后另起自然段写出结语类的文字即可（如：综上所述\ldots{}\ldots{}），但段前空一行。
 
-\hypertarget{section-19}{%
-\subsection{注释}\label{section-19}}
+\hypertarget{section-20}{%
+\subsection{注释}\label{section-20}}
 
 \textbf{注释范围。} 论文中的注释主要用于以下三个方面：（1）直接引文注释。即文中引用他人原话和相关资料所载数据时对出处的交待。（2）间接引用注释。即文中吸收他人观点时对出处的交待。（3）内容说明注释。即对文中需要补充说明而在正文中又不便详细阐述的其他问题所做出的解释。
 
@@ -738,8 +841,8 @@ Petal.Width & 0.3640421 & 0.1549632 & 2.349216 & 0.0201436\\
 
 \textbf{注释格式。} 注释的内容用小五号宋体（即通用word软件的默认标准）。注释中凡是涉及引用相关文献时，其标示内容及格式规范与后述参考文献的要求相同。
 
-\hypertarget{section-20}{%
-\subsection{主要参考文献}\label{section-20}}
+\hypertarget{section-21}{%
+\subsection{主要参考文献}\label{section-21}}
 
 \textbf{涉及范围。} 主要参考文献是指与论文内容有密切关系，且在写作中部分参考或者借鉴了他人文献的观点和材料时，为了对其成果表示尊重，同时也为了指明主要资料出处并便于检索而列出的一项论文要素。其范围不仅包括注释中已涉及的文献，还可包括论文写作过程所涉及的其它文献。
 
@@ -817,25 +920,25 @@ l其他文献
 
 论文写作中，若还涉及到科技报告和专利等其他类型的文献时，可以根据需要自行参考国家标准管理委员会2005年10月1日发布的中华人民共和国国家标准------《文后参考文献著录规则》（GB/T7714-2005，可上网自选阅读）的要求作相应处理，具体内容与格式此处略。
 
-\hypertarget{section-21}{%
-\subsection{附录（非必选项）}\label{section-21}}
+\hypertarget{section-22}{%
+\subsection{附录（非必选项）}\label{section-22}}
 
 \textbf{附录内容。} 附录为非必选项，它的主要内容可包括放在正文内显得过于冗长的公式推导、复杂的数据图表、论文使用的专门符号内涵释义、计量单位缩写表、专有名词缩写表和检索表，以及软件程序的有关说明等。若无需要，也可不单列此项。
 
 \textbf{附录格式。} 附录应另起一页。``附录''字样占一行，字间空两格，小二号宋体，加粗，居中，结尾处无标点符号，段前段后空一行。附录内容版面要求与正文相同，但其编序前应当冠以``附录''两字（如：``附录一''、``附录X''）。``附录X''单列一行，左顶格，附录题名列下一行，居中，段前段后空一行，格式同条次。
 
-\hypertarget{section-22}{%
-\subsection{后记（非必选项）}\label{section-22}}
+\hypertarget{section-23}{%
+\subsection{后记（非必选项）}\label{section-23}}
 
 \textbf{后记内容。} 后记为非必选项，它的主要内容可以是作者对论文过程的记录与写作感悟，也可以是对指导老师以及给予指导或协助完成毕业论文（设计）工作的组织、个人表示感谢。后记文字要简洁、得体、实事求是，切忌浮夸和庸俗之词。
 
 \textbf{后记格式。} 后记应另起页。``后记''字样占一行，字间空两格，小二号宋体，加粗，居中，结尾处无标点符号，段前段后空一行。后记内容的版面要求与正文相同，文内顺序宜用文字表达。
 
-\hypertarget{section-23}{%
-\section{毕业论文（设计）撰写规范}\label{section-23}}
-
 \hypertarget{section-24}{%
-\subsection{行文}\label{section-24}}
+\section{毕业论文（设计）撰写规范}\label{section-24}}
+
+\hypertarget{section-25}{%
+\subsection{行文}\label{section-25}}
 
 \textbf{用字规范。} 论文中所用汉字必须使用国家语言文字工作委员会公布的规范汉字，所有文字必须字面清晰，若必须更改，要使用国家新闻出版总署规定的标准校对符号，不能随意涂抺。
 
@@ -845,8 +948,8 @@ l其他文献
 
 \textbf{避免背题。} 论文中凡是单列一行的各级标题均不得背题（即标题出现在某页的最后一行，内容在次页），必要时应强制使用相关软件中另起一页的排版功能。
 
-\hypertarget{section-25}{%
-\subsection{正文主体}\label{section-25}}
+\hypertarget{section-26}{%
+\subsection{正文主体}\label{section-26}}
 
 论文中除``引论（或导论、绪论）''部分和``结语（或结论）''部分不需列出题序外，其他表明论文层级的内容应当统一由题序数字和标题表明相应的层次。若无特别需要，文中不宜用特殊符号来标示论文的各级层次（如：``●''和``■''等）。具体要求如下：
 
@@ -860,8 +963,8 @@ l其他文献
 
 \textbf{其他格式。} 当项次下无目次时，也可在正文的同一段落中用``（1）\ldots{}\ldots{}\ldots{}\ldots{}；（2）\ldots{}\ldots{}\ldots{}\ldots{}；（3）\ldots{}\ldots{}\ldots{}\ldots{}。''等的行文方式列举事项。但若有目次时，应在正文的同一段落中采用``包括\ldots{}\ldots{}\ldots{}\ldots{}、\ldots{}\ldots{}\ldots{}\ldots{}和\ldots{}\ldots{}\ldots{}\ldots{}等。''或``一是\ldots{}\ldots{}\ldots{}\ldots{}；二是\ldots{}\ldots{}\ldots{}\ldots{}；三是\ldots{}\ldots{}\ldots{}\ldots{}。''等类似的行文方式。若在文中使用``首先''、``其次''或``第一''、``第二''等顺序词时，其后不能使用顿号：``、''，而必须使用逗号：``，''。
 
-\hypertarget{section-26}{%
-\subsection{表格}\label{section-26}}
+\hypertarget{section-27}{%
+\subsection{表格}\label{section-27}}
 
 \textbf{表格编序。} 论文中的表格应当统一编序（如：表1），采用方式应与插图和公式的编序方式统一。表序用拉伯数字，且必须连续，不得重复或跳跃。每个表格应拟表名，如：XXXXXX表。
 
@@ -875,8 +978,8 @@ l其他文献
 
 \textbf{表格运用。} 论文中凡运用表格数据时，均应使用``见表X所示''的使用语，不宜用``见上表所示''。
 
-\hypertarget{section-27}{%
-\subsection{插图}\label{section-27}}
+\hypertarget{section-28}{%
+\subsection{插图}\label{section-28}}
 
 \textbf{插图编序。} 论文中的插图要精选。图序方式应与表格和公式的编序方式统一。图序统一用阿拉伯数字（如：图1）且必须连续，不得重复或跳跃。若全文仅有一个插图时，亦可在图题前加``附图''字样。毕业论文（设计）中的插图以及图中文字符号应打印，无法打印时一律用钢笔绘制和标出。
 
@@ -886,8 +989,8 @@ l其他文献
 
 \textbf{插图运用。} 凡在论文中运用插图资料时，均应使用``见图X所示''的使用语，不宜用``见上图所示''。
 
-\hypertarget{section-28}{%
-\subsection{公式}\label{section-28}}
+\hypertarget{section-29}{%
+\subsection{公式}\label{section-29}}
 
 \textbf{公式编序。} 论文中的公式应标注序号并加圆括号，序号一律用阿拉伯数字连续编序，编序方式与表格和插图统一，如：``（式1）''。公式的序号``（式X）''排在公式版面内容居中并靠右侧，且全文所有公式的右边页距应当相等（可统一右缩进两个字符处理）。
 
@@ -897,8 +1000,8 @@ l其他文献
 
 \textbf{公式运用。} 论文中凡是运用公式时，或者是对公式的某值内涵进行解释时，均应采用``式X中''的使用语，而不宜用``见上式''、 ``上式中''、``（式X）中''和``式（X）中''。
 
-\hypertarget{section-29}{%
-\subsection{数字}\label{section-29}}
+\hypertarget{section-30}{%
+\subsection{数字}\label{section-30}}
 
 \textbf{年代标示。} 公历世纪、年代、年、月、日和时间均应采用阿拉伯数字，如``2000年''、``2007-03-18''和``20世纪50年代''等，但模糊的年代数可用汉字表示，如``二十世纪五六十年代''等。避免使用``本世纪''和``上世纪''，可用``下世纪''。公历年份不能简写，如``2000年''不能写成``00年''。
 
@@ -910,13 +1013,13 @@ l其他文献
 
 \textbf{其他标示。} 其他特殊要素的标示方法按原国家技术监督局1995年12月13日发布的中华人民共和国国家标准------《出版物数字用法的规定》（GB/T 15835-1995）的要求执行。
 
-\hypertarget{section-30}{%
-\subsection{软件}\label{section-30}}
+\hypertarget{section-31}{%
+\subsection{软件}\label{section-31}}
 
 软件设计中的流程图和源程序清单，一般应当按软件文档格式作为``附件''在论文后列出，不列入论文内。特殊情况下不便列出时，可在答辩时展示。
 
-\hypertarget{section-31}{%
-\subsection{其他}\label{section-31}}
+\hypertarget{section-32}{%
+\subsection{其他}\label{section-32}}
 
 \textbf{英文简称。} 论文中有关国际性组织的专有名词英文缩写首次出现时，要用中文写出全称，并在括号内注明英文全称及简写的英文大写字母符号组合，后文才能用英文简称。例如：``2001年，中国加入世界贸易组织（World Trade Organization，简称WTO）后\ldots{}\ldots{}。根据WTO规则要求\ldots{}\ldots{}''。
 
@@ -932,8 +1035,8 @@ l其他文献
 
 其他事项。其他未涉及的论文写作中的有关事项，可参照原国家技术监督局1987年发布的GB／7713-1987------《科学技术报告、学位论文和学术论文的编写格式》执行。
 
-\hypertarget{section-32}{%
-\section{毕业论文（设计）的打印要求}\label{section-32}}
+\hypertarget{section-33}{%
+\section{毕业论文（设计）的打印要求}\label{section-33}}
 
 \textbf{版面规格。} 毕业论文用A4纸，一般为纵向排版，单面打印，左边装订。
 
@@ -943,22 +1046,22 @@ l其他文献
 
 \textbf{页脚设置。} 论文正文的页脚，从``导论''部分开始，直到``后记''部分为止，连续采用``1''、``2''、``3''\ldots{}\ldots{}等阿拉伯数字顺序编号标示页码，左右各加一连字符``-''，小五号字，宋体，如``-1-''（可自动插入），居中排列。此外，``作者声明''与``论文（设计）题目及署名''不设页脚，``中文摘要及关键词''、``外（英）文摘要及关键词''和``目录''的页脚设置要求均同正文，但各自起序，互不连续。
 
-\hypertarget{section-33}{%
-\section{毕业论文（设计）定稿的装订}\label{section-33}}
+\hypertarget{section-34}{%
+\section{毕业论文（设计）定稿的装订}\label{section-34}}
 
 \textbf{定稿要求。} 毕业论文完成定稿后并经有关的审查程序合格后，若各项基本要素齐全且达到此规范基本要求的，方可印刷、单独装订成册上交。
 
 装订顺序。毕业论文定稿的装订顺序如下：（1）毕业论文（设计）封面；（2）作者声明；（3）论文（设计）题目及署名；（4）中文摘要及关键词；（5）外（英）文摘要及关键词；（6）目录；（7）正文；（8）主要参考文献；（9）附录（非必选项）；（10）后记（非必选项）。
 
-\hypertarget{section-34}{%
-\section{毕业论文（设计）档案整理}\label{section-34}}
+\hypertarget{section-35}{%
+\section{毕业论文（设计）档案整理}\label{section-35}}
 
 档案内容。毕业论文（设计）档案的内容主要包括五个方面：（1）毕业论文（设计）开题报告；（2）毕业论文（设计）写作及答辩过程控制表；（3）毕业论文（设计）初稿；（4）毕业论文（设计）定稿；（5）其他必须保存的相关内容。
 
 档案封装。毕业论文（设计）的资料档案袋一律采用学校统一印制的``中南财经政法大学毕业论文（设计）资料袋''，并在档案袋封面手工填写相应的内容。
 
-\hypertarget{section-35}{%
-\section{附则}\label{section-35}}
+\hypertarget{section-36}{%
+\section{附则}\label{section-36}}
 
 规则解释。本规范的解释权属教务部。
 
@@ -971,6 +1074,10 @@ l其他文献
 \addcontentsline{toc}{chapter}{References}
 
 \bibliography{bib/bib}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-R-base}{}%
+R Core Team. 2016. \emph{R: A Language and Environment for Statistical Computing}. Vienna, Austria: R Foundation for Statistical Computing. \url{https://www.R-project.org/}.
 
 \end{document}
 %---------------------------------------------------------------------------%
