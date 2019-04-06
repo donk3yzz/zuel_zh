@@ -1,0 +1,50 @@
+# 使用TinyTex
+
+为了节省电脑的硬盘空间，同时还能够方便的使用LaTex的编译，避免在使用Rmarkdown的过程中遇到LaTex包缺失的问题，我们建议你使用[TinyTex](https://yihui.name/tinytex/cn/)，它是一个瘦身版的Tex Live，去掉了其中没有用处的文档和源代码，使用了Tex Live的自动化安装方式。
+
+## 安装TinyTex
+
+对于R用户，你可以方便的安装TinyTex，只需要运行以下指令然后等待几分钟（windows用户的安装过程中可能会弹出两次错误对话框，点击确定即可）
+
+```r
+# install.packages('remotes')
+remotes::install_github('yihui/tinytex')
+tinytex::install_tinytex()
+```
+
+注意，在一个电脑上安装多个LaTex套件可能会出现冲突，所以在安装之前，建议将电脑上的MikTex、Tex Live等卸载。在整个TinyTex安装完成之后，你可以运行
+
+```r
+tinytex::is_tinytex_install()
+```
+来检查TinyTex是否安装完成。
+
+## 使用TinyTex
+
+理论上而言，在TinyTex安装完成后，它可以自动安装你在使用不同Rmarkdown文档中依赖的LaTex包，你在第一次编译本文档时就可以体会到它的方便之处。当然我们还是不能排除TinyTex出现bug的可能性，所以你需要对它的基本函数的使用有一些了解。
+
+### 进行调试
+
+在使用Rmarkdown的过程中你可能会遇到一些来自LaTex的错误，如果你不想在每次报错后都阅读完成的log文件，你可以在文档中插入代码块
+
+```r
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
+```
+
+然后在Rstudio中获取错误信息，并根据错误做进一步的调整。
+
+### 手动安装依赖包
+
+当然，你也可能会遇到一些情况，TinyTex没有自动安装编译所依赖的包，这时你需要手动进行安装。通常，你可能会根据错误信息判断出缺失的文件`xxx.sty`，然后你可以在R中调用`tlmgr_search()`寻找包含`xxx.sty`的LaTex包，然后使用`tlmgr_install()`对缺失的包进行下载。
+
+同样存在一些可能，你需要更新TeX Live，你需要调用`tlmgr_update()`。
+
+```r
+library(tinytex)
+tlmgr_search('framed.sty')  # 搜索包含 framed.sty 文件的 LaTeX 包
+tlmgr_install('framed')     # 安装 framed 包
+tlmgr_update()              # 更新 TeX Live
+```

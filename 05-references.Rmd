@@ -1,4 +1,7 @@
 
-# References{-}
+# 参考文献 {-}
 
-\bibliography{bib/bib}
+```{=latex}
+\setlength{\bibsep}{0ex}
+\bibliography{bib/bib.bib, bib/Rpackage.bib}
+```

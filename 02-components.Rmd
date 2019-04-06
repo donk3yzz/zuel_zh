@@ -175,9 +175,11 @@ huxreg(lm1, lm2, lm3,
 
 同时在`knitr`中还有一个辅助函数`knitr::write_bib()`可以帮助你引用在写论文时使用到的包。例如：
 ```{r write_bib, echo = TRUE}
-knitr::write_bib(c("knitr", "stringr"), "Rpackage.bib", width = 60)
+knitr::write_bib(c("knitr", "stringr"), "bib/Rpackage.bib", width = 60)
 ```
+
 会生成一个名为`Rpackage`内容如下的`.bib`文件
+
 ```bib
 @Manual{R-knitr,
   title = {knitr: A General-Purpose Package for Dynamic Report
@@ -202,3 +204,4 @@ knitr::write_bib(c("knitr", "stringr"), "Rpackage.bib", width = 60)
 bibliography: [bib/bib.bib, bib/Rpackage.bib]
 ---
 ```
+然后你就可以在文章中引用添加在`.bib`中的文献，如[@R-knitr]。

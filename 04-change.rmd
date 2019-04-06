@@ -1,0 +1,5 @@
+# 修改这个模板
+
+一定要承认的一点是，因为本人没有系统学习过knitr和LaTex，参考的最多的文献也是[bookdown](https://bookdown.org/yihui/bookdown/)，所以在对这个模板进行修改的时候难免出现一些问题和代码不简洁不规范的情况，考虑到这些情况，如果你需要对这个模板进行修改，建议直接阅读[ucas_zh](https://gitlab.com/mohuangrui/ucasthesis)，以系统的了解整个模板的结构。
+
+同时，如果在模板修改时出现问题，应该首先参考[ctex宏集手册]()，如果在LaTex的使用中出现问题，建议首先查阅[LaTex中文手册]()。

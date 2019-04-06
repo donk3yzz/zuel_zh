@@ -1,0 +1,8 @@
+
+# 致谢
+
+本模板源自 mohuangrui/ucasthesis \LaTeX{} 模板^[https://gitlab.com/mohuangrui/ucasthesis]。感谢！
+
+首先要感谢yihui，毕竟创世神；还有zhao peng，他改造了ucas毕业论文的LaTex模板使之适用于bookdown，并在我准备对模板继续改造时提供了非常关键的帮助。
+
+追本溯源的话，应该还有pandoc，甚至Ctex的开发者，就不多言了。
